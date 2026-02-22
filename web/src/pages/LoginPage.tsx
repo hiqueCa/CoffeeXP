@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Box, Button, Container, TextField, Typography, Alert } from '@mui/material'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../contexts/useAuth'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')

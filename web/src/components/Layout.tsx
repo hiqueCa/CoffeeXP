@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom'
 import { AppBar, Toolbar, Typography, Button, Container, Box } from '@mui/material'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../contexts/useAuth'
 
 export default function Layout() {
   const { logout } = useAuth()
