@@ -14,5 +14,4 @@ class CoffeeBrand(BaseModel, table=True):
     name: str = Field()
     country: str = Field()
 
-    # Relationship to Coffee will be added in Task 6 when Coffee model is created:
-    # coffees: List["Coffee"] = Relationship(back_populates="coffee_brand")
+    coffees: List["Coffee"] = Relationship(back_populates="coffee_brand")
