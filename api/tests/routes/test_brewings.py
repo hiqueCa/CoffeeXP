@@ -190,7 +190,9 @@ def test_user_cannot_get_other_users_brewing(client, auth_header, auth_header_us
     assert response.status_code == 404
 
 
-def test_user_cannot_update_other_users_brewing(client, auth_header, auth_header_user_b):
+def test_user_cannot_update_other_users_brewing(
+    client, auth_header, auth_header_user_b
+):
     coffee_id = _setup_coffee(client, auth_header)
     brewing_id = _create_brewing(client, auth_header, coffee_id).json()["id"]
 
@@ -202,7 +204,9 @@ def test_user_cannot_update_other_users_brewing(client, auth_header, auth_header
     assert response.status_code == 404
 
 
-def test_user_cannot_delete_other_users_brewing(client, auth_header, auth_header_user_b):
+def test_user_cannot_delete_other_users_brewing(
+    client, auth_header, auth_header_user_b
+):
     coffee_id = _setup_coffee(client, auth_header)
     brewing_id = _create_brewing(client, auth_header, coffee_id).json()["id"]
 
