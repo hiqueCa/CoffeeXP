@@ -18,5 +18,4 @@ class Coffee(BaseModel, table=True):
     coffee_brand_id: Optional[int] = Field(default=None, foreign_key="coffee_brand.id")
 
     coffee_brand: Optional["CoffeeBrand"] = Relationship(back_populates="coffees")
-    # Relationship to Brewing will be added in Task 8 when Brewing model is created:
-    # brewings: List["Brewing"] = Relationship(back_populates="coffee")
+    brewings: List["Brewing"] = Relationship(back_populates="coffee")
