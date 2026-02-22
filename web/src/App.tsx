@@ -6,6 +6,10 @@ import Layout from './components/Layout'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import BrewingListPage from './pages/BrewingListPage'
+import BrewingDetailPage from './pages/BrewingDetailPage'
+import NewBrewingPage from './pages/NewBrewingPage'
+import CoffeeListPage from './pages/CoffeeListPage'
+import CoffeeDetailPage from './pages/CoffeeDetailPage'
 
 const queryClient = new QueryClient()
 const theme = createTheme()
@@ -22,6 +26,10 @@ function AppRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route path="/" element={<BrewingListPage />} />
+        <Route path="/brewings/new" element={<NewBrewingPage />} />
+        <Route path="/brewings/:id" element={<BrewingDetailPage />} />
+        <Route path="/coffees" element={<CoffeeListPage />} />
+        <Route path="/coffees/:id" element={<CoffeeDetailPage />} />
       </Route>
     </Routes>
   )
