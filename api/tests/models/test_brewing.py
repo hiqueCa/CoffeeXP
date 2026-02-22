@@ -4,6 +4,7 @@ from app.models.brewing import Brewing
 from app.models.coffee import Coffee
 from app.models.coffee_brand import CoffeeBrand
 from app.models.rating import Rating
+from app.models.user import User
 
 
 def test_brewing_creation():
@@ -29,6 +30,11 @@ def test_brewing_with_location():
 
 
 def test_brewing_persists_with_relationships(session):
+    user = User(email="test-user@test.com", hashed_password="test-hashed-password")
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+
     brand = CoffeeBrand(name="Illy", country="Italy")
     session.add(brand)
     session.commit()
@@ -47,6 +53,7 @@ def test_brewing_persists_with_relationships(session):
     brewing = Brewing(
         coffee_id=coffee.id,
         rating_id=rating.id,
+        user_id=user.id,
         method="V60",
         grams=15,
         ml=250,
@@ -62,3 +69,4 @@ def test_brewing_persists_with_relationships(session):
     assert brewing.id is not None
     assert brewing.coffee.name == "Classico"
     assert brewing.rating.overall == 4
+    assert brewing.user.email == user.email
