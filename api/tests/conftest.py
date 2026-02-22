@@ -39,3 +39,17 @@ def client_fixture(session: Session):
     client = TestClient(app)
     yield client
     app.dependency_overrides.clear()
+
+
+from app.models.user import User
+from app.services.auth import AuthService
+
+
+@pytest.fixture(name="auth_header")
+def auth_header_fixture(session: Session):
+    user = User(email="test@test.com", hashed_password=AuthService.hash_password("test"))
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    token = AuthService.create_access_token({"sub": user.email})
+    return {"Authorization": f"Bearer {token}"}
