@@ -55,3 +55,15 @@ def auth_header_fixture(session: Session):
     session.refresh(user)
     token = AuthService.create_access_token({"sub": user.email})
     return {"Authorization": f"Bearer {token}"}
+
+
+@pytest.fixture(name="auth_header_user_b")
+def auth_header_user_b_fixture(session: Session):
+    user = User(
+        email="userb@test.com", hashed_password=AuthService.hash_password("test")
+    )
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    token = AuthService.create_access_token({"sub": user.email})
+    return {"Authorization": f"Bearer {token}"}

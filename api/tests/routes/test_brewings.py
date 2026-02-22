@@ -150,3 +150,61 @@ def test_delete_brewing(client, auth_header):
 
     response = client.delete(f"/brewings/{brewing_id}", headers=auth_header)
     assert response.status_code == 204
+
+
+def _create_brewing(client, auth_header, coffee_id):
+    return client.post(
+        "/brewings",
+        json={
+            "coffee_id": coffee_id,
+            "method": "V60",
+            "grams": 15,
+            "ml": 250,
+            "rating": {
+                "flavor": 3,
+                "acidic": 3,
+                "aroma": 3,
+                "appearance": 3,
+                "bitter": 3,
+            },
+        },
+        headers=auth_header,
+    )
+
+
+def test_user_cannot_list_other_users_brewings(client, auth_header, auth_header_user_b):
+    coffee_id = _setup_coffee(client, auth_header)
+    _create_brewing(client, auth_header, coffee_id)
+    _create_brewing(client, auth_header, coffee_id)
+
+    response = client.get("/brewings", headers=auth_header_user_b)
+    assert response.status_code == 200
+    assert len(response.json()) == 0
+
+
+def test_user_cannot_get_other_users_brewing(client, auth_header, auth_header_user_b):
+    coffee_id = _setup_coffee(client, auth_header)
+    brewing_id = _create_brewing(client, auth_header, coffee_id).json()["id"]
+
+    response = client.get(f"/brewings/{brewing_id}", headers=auth_header_user_b)
+    assert response.status_code == 404
+
+
+def test_user_cannot_update_other_users_brewing(client, auth_header, auth_header_user_b):
+    coffee_id = _setup_coffee(client, auth_header)
+    brewing_id = _create_brewing(client, auth_header, coffee_id).json()["id"]
+
+    response = client.put(
+        f"/brewings/{brewing_id}",
+        json={"notes": "Hacked"},
+        headers=auth_header_user_b,
+    )
+    assert response.status_code == 404
+
+
+def test_user_cannot_delete_other_users_brewing(client, auth_header, auth_header_user_b):
+    coffee_id = _setup_coffee(client, auth_header)
+    brewing_id = _create_brewing(client, auth_header, coffee_id).json()["id"]
+
+    response = client.delete(f"/brewings/{brewing_id}", headers=auth_header_user_b)
+    assert response.status_code == 404
