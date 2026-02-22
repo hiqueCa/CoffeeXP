@@ -74,6 +74,7 @@ def create_brewing(
     brewing = Brewing(
         coffee_id=data.coffee_id,
         rating_id=rating.id,
+        user_id=current_user.id,
         method=data.method,
         grams=data.grams,
         ml=data.ml,
@@ -93,7 +94,11 @@ def list_brewings(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewings = session.exec(select(Brewing).order_by(Brewing.created_at.desc())).all()
+    brewings = session.exec(
+        select(Brewing)
+        .where(Brewing.user_id == current_user.id)
+        .order_by(Brewing.created_at.desc())
+    ).all()
     return [_build_response(b) for b in brewings]
 
 
@@ -103,7 +108,11 @@ def get_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing = session.get(Brewing, brewing_id)
+    brewing = session.exec(
+        select(Brewing).where(
+            Brewing.id == brewing_id, Brewing.user_id == current_user.id
+        )
+    ).first()
     if not brewing:
         raise HTTPException(status_code=404, detail="Brewing not found")
     return _build_response(brewing)
@@ -116,7 +125,11 @@ def update_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing = session.get(Brewing, brewing_id)
+    brewing = session.exec(
+        select(Brewing).where(
+            Brewing.id == brewing_id, Brewing.user_id == current_user.id
+        )
+    ).first()
     if not brewing:
         raise HTTPException(status_code=404, detail="Brewing not found")
     for key, value in data.model_dump(exclude_unset=True).items():
@@ -133,7 +146,11 @@ def delete_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing = session.get(Brewing, brewing_id)
+    brewing = session.exec(
+        select(Brewing).where(
+            Brewing.id == brewing_id, Brewing.user_id == current_user.id
+        )
+    ).first()
     if not brewing:
         raise HTTPException(status_code=404, detail="Brewing not found")
     if brewing.rating:
