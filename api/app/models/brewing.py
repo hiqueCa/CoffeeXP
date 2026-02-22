@@ -7,6 +7,7 @@ from app.models.base_model import BaseModel
 if TYPE_CHECKING:
     from app.models.coffee import Coffee
     from app.models.rating import Rating
+    from app.models.user import User
 
 
 class Brewing(BaseModel, table=True):
@@ -14,6 +15,7 @@ class Brewing(BaseModel, table=True):
 
     coffee_id: Optional[int] = Field(default=None, foreign_key="coffee.id")
     rating_id: Optional[int] = Field(default=None, foreign_key="rating.id")
+    user_id: int = Field(foreign_key="user.id")
     method: str = Field()
     grams: int = Field()
     ml: int = Field()
@@ -22,5 +24,6 @@ class Brewing(BaseModel, table=True):
     longitude: Optional[float] = Field(default=None)
     location: Optional[str] = Field(default=None)
 
+    user: Optional["User"] = Relationship(back_populates="brewings")
     coffee: Optional["Coffee"] = Relationship(back_populates="brewings")
     rating: Optional["Rating"] = Relationship()
