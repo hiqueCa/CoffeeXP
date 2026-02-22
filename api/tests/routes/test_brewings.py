@@ -52,7 +52,13 @@ def test_list_brewings(client, auth_header):
                 "method": "V60",
                 "grams": 15,
                 "ml": 250,
-                "rating": {"flavor": 3, "acidic": 3, "aroma": 3, "appearance": 3, "bitter": 3},
+                "rating": {
+                    "flavor": 3,
+                    "acidic": 3,
+                    "aroma": 3,
+                    "appearance": 3,
+                    "bitter": 3,
+                },
             },
             headers=auth_header,
         )
@@ -71,7 +77,13 @@ def test_get_brewing_includes_relations(client, auth_header):
             "method": "V60",
             "grams": 15,
             "ml": 250,
-            "rating": {"flavor": 4, "acidic": 3, "aroma": 5, "appearance": 4, "bitter": 2},
+            "rating": {
+                "flavor": 4,
+                "acidic": 3,
+                "aroma": 5,
+                "appearance": 4,
+                "bitter": 2,
+            },
         },
         headers=auth_header,
     )
@@ -94,7 +106,13 @@ def test_update_brewing(client, auth_header):
             "method": "V60",
             "grams": 15,
             "ml": 250,
-            "rating": {"flavor": 3, "acidic": 3, "aroma": 3, "appearance": 3, "bitter": 3},
+            "rating": {
+                "flavor": 3,
+                "acidic": 3,
+                "aroma": 3,
+                "appearance": 3,
+                "bitter": 3,
+            },
         },
         headers=auth_header,
     )
@@ -118,7 +136,13 @@ def test_delete_brewing(client, auth_header):
             "method": "V60",
             "grams": 15,
             "ml": 250,
-            "rating": {"flavor": 3, "acidic": 3, "aroma": 3, "appearance": 3, "bitter": 3},
+            "rating": {
+                "flavor": 3,
+                "acidic": 3,
+                "aroma": 3,
+                "appearance": 3,
+                "bitter": 3,
+            },
         },
         headers=auth_header,
     )

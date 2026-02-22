@@ -14,11 +14,11 @@ from app.services.auth import AuthService
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-@router.post("/register", response_model=RegisterResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/register", response_model=RegisterResponse, status_code=status.HTTP_201_CREATED
+)
 def register(request: RegisterRequest, session: Session = Depends(get_session)):
-    existing = session.exec(
-        select(User).where(User.email == request.email)
-    ).first()
+    existing = session.exec(select(User).where(User.email == request.email)).first()
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
 

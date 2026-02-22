@@ -14,7 +14,9 @@ from app.schemas.coffee_brand import (
 router = APIRouter(prefix="/coffee-brands", tags=["coffee-brands"])
 
 
-@router.post("/", response_model=CoffeeBrandResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/", response_model=CoffeeBrandResponse, status_code=status.HTTP_201_CREATED
+)
 def create_coffee_brand(
     data: CoffeeBrandCreate,
     session: Session = Depends(get_session),

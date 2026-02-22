@@ -27,7 +27,10 @@ def create_coffee(
     session.commit()
     session.refresh(coffee)
     return CoffeeResponse(
-        id=coffee.id, name=coffee.name, price=str(coffee.price), coffee_brand_id=coffee.coffee_brand_id
+        id=coffee.id,
+        name=coffee.name,
+        price=str(coffee.price),
+        coffee_brand_id=coffee.coffee_brand_id,
     )
 
 
@@ -42,7 +45,9 @@ def list_coffees(
         statement = statement.where(Coffee.coffee_brand_id == brand_id)
     coffees = session.exec(statement).all()
     return [
-        CoffeeResponse(id=c.id, name=c.name, price=str(c.price), coffee_brand_id=c.coffee_brand_id)
+        CoffeeResponse(
+            id=c.id, name=c.name, price=str(c.price), coffee_brand_id=c.coffee_brand_id
+        )
         for c in coffees
     ]
 
@@ -57,7 +62,10 @@ def get_coffee(
     if not coffee:
         raise HTTPException(status_code=404, detail="Coffee not found")
     return CoffeeResponse(
-        id=coffee.id, name=coffee.name, price=str(coffee.price), coffee_brand_id=coffee.coffee_brand_id
+        id=coffee.id,
+        name=coffee.name,
+        price=str(coffee.price),
+        coffee_brand_id=coffee.coffee_brand_id,
     )
 
 
@@ -80,7 +88,10 @@ def update_coffee(
     session.commit()
     session.refresh(coffee)
     return CoffeeResponse(
-        id=coffee.id, name=coffee.name, price=str(coffee.price), coffee_brand_id=coffee.coffee_brand_id
+        id=coffee.id,
+        name=coffee.name,
+        price=str(coffee.price),
+        coffee_brand_id=coffee.coffee_brand_id,
     )
 
 

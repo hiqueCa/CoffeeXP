@@ -20,8 +20,14 @@ def test_create_coffee_brand_requires_auth(client):
 
 
 def test_list_coffee_brands(client, auth_header):
-    client.post("/coffee-brands", json={"name": "Illy", "country": "Italy"}, headers=auth_header)
-    client.post("/coffee-brands", json={"name": "Lavazza", "country": "Italy"}, headers=auth_header)
+    client.post(
+        "/coffee-brands", json={"name": "Illy", "country": "Italy"}, headers=auth_header
+    )
+    client.post(
+        "/coffee-brands",
+        json={"name": "Lavazza", "country": "Italy"},
+        headers=auth_header,
+    )
 
     response = client.get("/coffee-brands", headers=auth_header)
     assert response.status_code == 200

@@ -47,7 +47,9 @@ from app.services.auth import AuthService
 
 @pytest.fixture(name="auth_header")
 def auth_header_fixture(session: Session):
-    user = User(email="test@test.com", hashed_password=AuthService.hash_password("test"))
+    user = User(
+        email="test@test.com", hashed_password=AuthService.hash_password("test")
+    )
     session.add(user)
     session.commit()
     session.refresh(user)
