@@ -15,7 +15,7 @@ class Brewing(BaseModel, table=True):
 
     coffee_id: Optional[int] = Field(default=None, foreign_key="coffee.id")
     rating_id: Optional[int] = Field(default=None, foreign_key="rating.id")
-    user_id: Optional[int] = Field(default=None, foreign_key="user.id")
+    user_id: int = Field(foreign_key="user.id")
     method: str = Field()
     grams: int = Field()
     ml: int = Field()
