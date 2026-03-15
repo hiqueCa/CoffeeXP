@@ -1,11 +1,4 @@
-from typing import TYPE_CHECKING, Optional, Set
-
-from sqlmodel import Field, Relationship
-
-from app.models.base_model import BaseModel
-
-if TYPE_CHECKING:
-    from app.models.user import User
+from typing import Set
 
 
 class Brewing:
