@@ -1,29 +1,20 @@
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, Set
 
 from sqlmodel import Field, Relationship
 
 from app.models.base_model import BaseModel
 
 if TYPE_CHECKING:
-    from app.models.coffee import Coffee
-    from app.models.rating import Rating
     from app.models.user import User
 
 
-class Brewing(BaseModel, table=True):
-    __tablename__ = "brewing"
-
-    coffee_id: Optional[int] = Field(default=None, foreign_key="coffee.id")
-    rating_id: Optional[int] = Field(default=None, foreign_key="rating.id")
-    user_id: int = Field(foreign_key="user.id")
-    method: str = Field()
-    grams: int = Field()
-    ml: int = Field()
-    notes: Optional[str] = Field(default=None)
-    latitude: Optional[float] = Field(default=None)
-    longitude: Optional[float] = Field(default=None)
-    location: Optional[str] = Field(default=None)
-
-    user: Optional["User"] = Relationship(back_populates="brewings")
-    coffee: Optional["Coffee"] = Relationship(back_populates="brewings")
-    rating: Optional["Rating"] = Relationship()
+class Brewing:
+    def __init__(
+        self,
+        user_id: int = None,
+        method: Set[str] = None,
+        coffee: Set[str] = None,
+    ):
+        self.user_id = user_id
+        self.method = method
+        self.coffee = coffee

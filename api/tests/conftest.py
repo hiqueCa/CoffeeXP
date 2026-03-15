@@ -1,10 +1,13 @@
 import pytest
-from sqlmodel import SQLModel, Session, create_engine
 from fastapi.testclient import TestClient
+from app.database.schemas import metadata
 
 from app.config import settings
 from app.main import app
 from app.database import get_session
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+
 
 test_engine = create_engine(
     settings.test_database_url or "sqlite://",
@@ -14,9 +17,9 @@ test_engine = create_engine(
 
 @pytest.fixture(scope="session", autouse=True)
 def setup_database():
-    SQLModel.metadata.create_all(test_engine)
+    metadata.create_all(test_engine)
     yield
-    SQLModel.metadata.drop_all(test_engine)
+    metadata.drop_all(test_engine)
 
 
 @pytest.fixture(name="session")

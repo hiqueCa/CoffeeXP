@@ -5,7 +5,6 @@ from sqlmodel import Session, select
 
 from app.database import get_session
 from app.dependencies import get_current_user
-from app.models.coffee import Coffee
 from app.models.user import User
 from app.schemas.coffee import CoffeeCreate, CoffeeResponse, CoffeeUpdate
 

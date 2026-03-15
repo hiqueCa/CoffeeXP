@@ -1,9 +1,6 @@
 from decimal import Decimal
 
 from app.models.brewing import Brewing
-from app.models.coffee import Coffee
-from app.models.coffee_brand import CoffeeBrand
-from app.models.rating import Rating
 from app.models.user import User
 
 

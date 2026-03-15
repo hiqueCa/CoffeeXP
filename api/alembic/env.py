@@ -4,6 +4,7 @@ from alembic import context
 from sqlmodel import SQLModel
 
 from app.config import settings
+from app.database.schemas import metadata
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url)
@@ -13,7 +14,7 @@ if config.config_file_name is not None:
 
 from app.models import *  # noqa: F401, F403
 
-target_metadata = SQLModel.metadata
+target_metadata = metadata
 
 
 def run_migrations_offline() -> None:

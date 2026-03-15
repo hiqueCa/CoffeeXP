@@ -4,7 +4,6 @@ from sqlmodel import Session, select
 from app.database import get_session
 from app.dependencies import get_current_user
 from app.models.brewing import Brewing
-from app.models.rating import Rating
 from app.models.user import User
 from app.schemas.brewing import (
     BrewingCreate,
