@@ -4,8 +4,8 @@ from sqlalchemy import select
 
 from app.database import get_session
 from app.dependencies import get_current_user
-from app.entities.brewing import Brewing
-from app.entities.user import User
+from app.domain.brewing import Brewing
+from app.domain.user import User
 from app.schemas.brewing import (
     BrewingCreate,
     BrewingResponse,

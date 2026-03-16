@@ -2,7 +2,7 @@ import pytest
 from fastapi import HTTPException
 
 from app.dependencies import get_current_user
-from app.entities.user import User
+from app.domain.user import User
 from app.services.auth import AuthService
 
 

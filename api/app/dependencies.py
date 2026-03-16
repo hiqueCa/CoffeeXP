@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 
 from app.database import get_session
-from app.entities.user import User
+from app.domain.user import User
 from app.services.auth import AuthService
 
 security = HTTPBearer()
