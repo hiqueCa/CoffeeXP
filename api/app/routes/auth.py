@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlmodel import Session, select
-
+from sqlmodel import select
+from sqlalchemy.orm import Session
 from app.database import get_session
-from app.models.user import User
+from app.entities.user import User
 from app.schemas.auth import (
     LoginRequest,
     RegisterRequest,
@@ -18,7 +18,7 @@ router = APIRouter(prefix="/auth", tags=["auth"])
     "/register", response_model=RegisterResponse, status_code=status.HTTP_201_CREATED
 )
 def register(request: RegisterRequest, session: Session = Depends(get_session)):
-    existing = session.exec(select(User).where(User.email == request.email)).first()
+    existing = session.execute(select(User).where(User.email == request.email)).first()
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
 
@@ -34,7 +34,7 @@ def register(request: RegisterRequest, session: Session = Depends(get_session)):
 
 @router.post("/login", response_model=TokenResponse)
 def login(request: LoginRequest, session: Session = Depends(get_session)):
-    user = session.exec(select(User).where(User.email == request.email)).first()
+    user = session.execute(select(User).where(User.email == request.email)).first()
     if not user or not AuthService.verify_password(
         request.password, user.hashed_password
     ):

@@ -1,5 +1,5 @@
-from sqlmodel import SQLModel, Session, create_engine
-
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
 from app.config import settings
 
 engine = create_engine(settings.database_url) if settings.database_url else None

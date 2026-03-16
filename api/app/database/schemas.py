@@ -2,7 +2,7 @@ from sqlalchemy import MetaData, Column, Integer, String, DateTime, Table
 from datetime import datetime, timezone
 from sqlalchemy.orm import registry
 from sqlalchemy.dialects.postgresql import JSONB
-from app.models import *
+from app.entities import *
 
 metadata = MetaData()
 mapper_registry = registry()

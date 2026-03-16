@@ -44,7 +44,7 @@ def client_fixture(session: Session):
     app.dependency_overrides.clear()
 
 
-from app.models.user import User
+from app.entities.user import User
 from app.services.auth import AuthService
 
 

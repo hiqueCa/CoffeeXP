@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlmodel import Session, select
+from sqlalchemy.orm import Session
+from sqlalchemy import select
 
 from app.database import get_session
 from app.dependencies import get_current_user
-from app.models.brewing import Brewing
-from app.models.user import User
+from app.entities.brewing import Brewing
+from app.entities.user import User
 from app.schemas.brewing import (
     BrewingCreate,
     BrewingResponse,
@@ -93,13 +94,12 @@ def list_brewings(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewings = session.exec(
+    brewings = session.execute(
         select(Brewing)
         .where(Brewing.user_id == current_user.id)
         .order_by(Brewing.created_at.desc())
     ).all()
     return [_build_response(b) for b in brewings]
-
 
 @router.get("/{brewing_id}", response_model=BrewingResponse)
 def get_brewing(
@@ -107,7 +107,7 @@ def get_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing = session.exec(
+    brewing = session.execute(
         select(Brewing).where(
             Brewing.id == brewing_id, Brewing.user_id == current_user.id
         )
@@ -124,7 +124,7 @@ def update_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing = session.exec(
+    brewing = session.execute(
         select(Brewing).where(
             Brewing.id == brewing_id, Brewing.user_id == current_user.id
         )
@@ -145,7 +145,7 @@ def delete_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing = session.exec(
+    brewing = session.execute(
         select(Brewing).where(
             Brewing.id == brewing_id, Brewing.user_id == current_user.id
         )

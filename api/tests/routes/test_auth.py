@@ -5,6 +5,7 @@ def test_register_creates_user(client):
     )
     assert response.status_code == 201
     data = response.json()
+    print(data)
     assert data["email"] == "new@example.com"
     assert "id" in data
     assert "password" not in data
