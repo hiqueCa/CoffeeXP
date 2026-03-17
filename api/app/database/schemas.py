@@ -20,6 +20,7 @@ def common_columns():
         ),
     ]
 
+
 user_table = Table(
     "users",
     metadata,

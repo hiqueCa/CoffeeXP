@@ -8,7 +8,6 @@ from app.database import get_session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-
 test_engine = create_engine(
     settings.test_database_url or "sqlite://",
     connect_args={"check_same_thread": False} if not settings.test_database_url else {},

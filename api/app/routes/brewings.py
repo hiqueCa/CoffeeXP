@@ -101,6 +101,7 @@ def list_brewings(
     ).all()
     return [_build_response(b) for b in brewings]
 
+
 @router.get("/{brewing_id}", response_model=BrewingResponse)
 def get_brewing(
     brewing_id: int,
