@@ -1,4 +1,3 @@
-from sqlalchemy import text
 
 from app.repositories.user_repository import UserRepository
 from app.domain.user import User

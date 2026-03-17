@@ -1,7 +1,6 @@
 from logging.config import fileConfig
 
 from alembic import context
-from sqlmodel import SQLModel
 
 from app.config import settings
 from app.database.schemas import metadata

@@ -3,6 +3,9 @@
 install:
 	uv sync
 
+remove-unused-code:
+	uv run autoflake --in-place --remove-unused-variables --remove-all-unused-imports --recursive *
+
 dev:
 	uv run uvicorn app.main:app --reload --port 8000
 
