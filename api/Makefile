@@ -7,7 +7,7 @@ dev:
 	uv run uvicorn app.main:app --reload --port 8000
 
 test:
-	uv run pytest -v
+	uv run pytest -vv $(FILE)
 
 test-cov:
 	uv run pytest --cov --cov-report=html -v

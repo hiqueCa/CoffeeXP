@@ -20,9 +20,8 @@ def common_columns():
         ),
     ]
 
-
 user_table = Table(
-    "user",
+    "users",
     metadata,
     *common_columns(),
     Column("email", String, nullable=False),
@@ -30,7 +29,7 @@ user_table = Table(
 )
 
 brewing_table = Table(
-    "brewing",
+    "brewings",
     metadata,
     *common_columns(),
     Column("user_id", Integer, nullable=False),
