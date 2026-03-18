@@ -44,7 +44,7 @@ def client_fixture(session: Session):
 
 
 from app.domain.user import User
-from app.services.auth import AuthService
+from app.services.auth_service import AuthService
 
 
 @pytest.fixture(name="auth_header")

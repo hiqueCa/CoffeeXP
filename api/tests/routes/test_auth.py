@@ -5,7 +5,6 @@ def test_register_creates_user(client):
     )
     assert response.status_code == 201
     data = response.json()
-    print(data)
     assert data["email"] == "new@example.com"
     assert "id" in data
     assert "password" not in data
@@ -47,5 +46,13 @@ def test_login_rejects_wrong_password(client):
     response = client.post(
         "/auth/login",
         json={"email": "wrong@example.com", "password": "wrongpass"},
+    )
+    assert response.status_code == 401
+
+
+def test_login_rejects_nonexistent_email(client):
+    response = client.post(
+        "/auth/login",
+        json={"email": "nonexistent@example.com", "password": "secret123"},
     )
     assert response.status_code == 401

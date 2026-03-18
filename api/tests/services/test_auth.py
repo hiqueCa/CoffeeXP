@@ -1,4 +1,4 @@
-from app.services.auth import AuthService
+from app.services.auth_service import AuthService
 
 
 def test_hash_password_returns_different_string():

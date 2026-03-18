@@ -1,14 +1,37 @@
 from datetime import datetime, timedelta, timezone
-
+from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-
+from app.domain.user import User
 from app.config import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 class AuthService:
+    def __init__(self, session: Session):
+        self.session = session
+
+    def register_user(self, email: str, password: str):
+        existing_user = self.session.query(User).filter_by(email=email).first()
+        if existing_user:
+            raise ValueError("Email already registered")
+
+        user = User(email=email, hashed_password=self.hash_password(password))
+        self.session.add(user)
+        self.session.commit()
+        self.session.refresh(user)
+        return user
+
+    def authenticate_user(self, email: str, password: str) -> str:
+        user = self.session.query(User).filter_by(email=email).first()
+
+        if not user or not self.verify_password(password, user.hashed_password):
+            raise ValueError("Invalid credentials")
+
+        bearer_token = self.create_access_token({"sub": user.email})
+        return bearer_token
+
     @staticmethod
     def hash_password(password: str) -> str:
         return pwd_context.hash(password)

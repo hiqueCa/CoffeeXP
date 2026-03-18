@@ -3,7 +3,7 @@ from fastapi import HTTPException
 
 from app.dependencies import get_current_user
 from app.domain.user import User
-from app.services.auth import AuthService
+from app.services.auth_service import AuthService
 
 
 def test_get_current_user_returns_user(session):
