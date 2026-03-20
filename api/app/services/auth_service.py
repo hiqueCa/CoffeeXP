@@ -21,9 +21,8 @@ class AuthService:
             raise ValueError("Email already registered")
 
         user = User(email=email, hashed_password=self.hash_password(password))
-        self.session.add(user)
-        self.session.commit()
-        self.session.refresh(user)
+        user = self.repository.add(user)
+
         return user
 
     def authenticate_user(self, email: str, password: str) -> str:
