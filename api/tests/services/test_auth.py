@@ -27,6 +27,7 @@ def test_create_access_token():
 def test_decode_access_token():
     token = AuthService.create_access_token({"sub": "test@example.com"})
     payload = AuthService.decode_access_token(token)
+    assert payload is not None
     assert payload["sub"] == "test@example.com"
 
 
