@@ -14,24 +14,37 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 
 @router.post(
-    "/register", response_model=RegisterResponse, status_code=status.HTTP_201_CREATED
+    "/register",
+    response_model=RegisterResponse,
+    status_code=status.HTTP_201_CREATED,
+    responses={
+        status.HTTP_400_BAD_REQUEST: {"description": "Bad Request"},
+    },
 )
 def register(request: RegisterRequest, session: Session = Depends(get_session)):
     try:
         auth_service = AuthService(session, UserRepository(session))
         user = auth_service.register_user(request.email, request.password)
     except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
     return RegisterResponse(id=user.id, email=user.email)
 
 
-@router.post("/login", response_model=TokenResponse)
+@router.post(
+    "/login",
+    response_model=TokenResponse,
+    responses={
+        status.HTTP_401_UNAUTHORIZED: {
+            "description": "Unauthorized",
+        }
+    },
+)
 def login(request: LoginRequest, session: Session = Depends(get_session)):
     try:
         auth_service = AuthService(session, UserRepository(session))
         token = auth_service.authenticate_user(request.email, request.password)
     except ValueError as e:
-        raise HTTPException(status_code=401, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=str(e))
 
     return TokenResponse(access_token=token)
