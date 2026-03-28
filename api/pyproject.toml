@@ -33,4 +33,5 @@ dev = [
     "httpx>=0.26.0",
     "black>=24.0.0",
     "autoflake>=2.3.3",
+    "factory-boy>=3.3.3",
 ]
