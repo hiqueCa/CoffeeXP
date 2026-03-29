@@ -1,14 +1,11 @@
 import factory
 from app.domain import Brewing
-from app.repositories.base_repository import BaseRepository
 from app.schemas.brewing import BrewingMethod, CoffeeNested, GrindSize, RoastLevel
-
+from tests.factories.user_factory import UserFactory
 
 class BrewingFactory(factory.base.Factory):
     class Meta:
         model = Brewing
-
-    _repository: BaseRepository = None
 
     coffee = CoffeeNested(
         name="Test Coffee",
@@ -22,9 +19,5 @@ class BrewingFactory(factory.base.Factory):
     water_volume = 250
     coffee_amount = 15
     rating = 4
-    user_id = 1
-
-    @classmethod
-    def _create(cls, model_class, *args, **kwargs) -> Brewing:
-        instance = model_class(*args, **kwargs)
-        return cls._repository.add(instance)
+    user = factory.SubFactory(UserFactory)
+    user_id = factory.LazyAttribute(lambda obj: obj.user.id)

@@ -8,6 +8,10 @@ from app.database import get_session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
+
+from app.domain.user import User
+from app.services.auth_service import AuthService
+
 test_engine = create_engine(
     settings.test_database_url or "sqlite://",
     connect_args={"check_same_thread": False} if not settings.test_database_url else {},
@@ -41,17 +45,6 @@ def client_fixture(session: Session):
     client = TestClient(app)
     yield client
     app.dependency_overrides.clear()
-
-
-from app.domain.user import User
-from app.repositories.brewing_repository import BrewingRepository
-from app.services.auth_service import AuthService
-from tests.factories.brewing_factory import BrewingFactory
-
-
-@pytest.fixture(autouse=True)
-def set_factory_repositories(session: Session):
-    BrewingFactory._repository = BrewingRepository(session)
 
 
 @pytest.fixture(name="auth_header")

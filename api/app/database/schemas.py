@@ -1,6 +1,6 @@
-from sqlalchemy import MetaData, Column, Integer, String, DateTime, Table
+from sqlalchemy import MetaData, Column, Integer, String, DateTime, Table, ForeignKey
 from datetime import datetime, timezone
-from sqlalchemy.orm import registry
+from sqlalchemy.orm import registry, relationship
 from sqlalchemy.dialects.postgresql import JSONB
 from app.domain import *
 
@@ -33,7 +33,7 @@ brewing_table = Table(
     "brewings",
     metadata,
     *common_columns(),
-    Column("user_id", Integer, nullable=False),
+    Column("user_id", Integer, ForeignKey("users.id"), nullable=False),
     Column("coffee", JSONB, nullable=False),
     Column("method", String, nullable=False),
     Column("grind_size", String, nullable=False),
@@ -43,4 +43,6 @@ brewing_table = Table(
 )
 
 mapper_registry.map_imperatively(User, user_table)
-mapper_registry.map_imperatively(Brewing, brewing_table)
+mapper_registry.map_imperatively(Brewing, brewing_table, properties={
+    "user": relationship(User, lazy="joined"),
+})
