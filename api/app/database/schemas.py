@@ -35,7 +35,10 @@ brewing_table = Table(
     *common_columns(),
     Column("user_id", Integer, nullable=False),
     Column("coffee", JSONB, nullable=False),
-    Column("method", JSONB, nullable=False),
+    Column("method", String, nullable=False),
+    Column("grind_size", String, nullable=False),
+    Column("water_volume", Integer, nullable=False),
+    Column("coffee_amount", Integer, nullable=False),
     Column("rating", Integer, nullable=False),
 )
 

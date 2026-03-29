@@ -1,68 +1,51 @@
+from enum import Enum
+
 from pydantic import BaseModel
 
 
-class RatingCreate(BaseModel):
-    flavor: int
-    acidic: int
-    aroma: int
-    appearance: int
-    bitter: int
+class GrindSize(str, Enum):
+    coarse = "Coarse"
+    medium = "Medium"
+    fine = "Fine"
 
 
-class RatingResponse(BaseModel):
-    id: int
-    flavor: int
-    acidic: int
-    aroma: int
-    appearance: int
-    bitter: int
-    overall: int
+class RoastLevel(str, Enum):
+    light = "Light"
+    medium = "Medium"
+    dark = "Dark"
 
 
-class CoffeeBrandNested(BaseModel):
-    id: int
-    name: str
-    country: str
+class BrewingMethod(str, Enum):
+    espresso = "Espresso"
+    french_press = "French Press"
+    aeropress = "Aeropress"
+    cold_brew = "Cold Brew"
+    moka_pot = "Moka Pot"
+    v60 = "V60"
+    chemex = "Chemex"
 
 
 class CoffeeNested(BaseModel):
-    id: int
     name: str
-    price: str
-    brand: CoffeeBrandNested | None = None
+    country: str
+    price: float
+    roast_level: RoastLevel
 
 
 class BrewingCreate(BaseModel):
-    coffee_id: int
-    method: str
-    grams: int
-    ml: int
-    notes: str | None = None
-    latitude: float | None = None
-    longitude: float | None = None
-    location: str | None = None
-    rating: RatingCreate
-
-
-class BrewingUpdate(BaseModel):
-    method: str | None = None
-    grams: int | None = None
-    ml: int | None = None
-    notes: str | None = None
-    latitude: float | None = None
-    longitude: float | None = None
-    location: str | None = None
+    coffee: CoffeeNested
+    method: BrewingMethod
+    water_volume: int
+    coffee_amount: int
+    grind_size: GrindSize
+    rating: int
 
 
 class BrewingResponse(BaseModel):
     id: int
-    method: str
-    grams: int
-    ml: int
-    notes: str | None = None
-    latitude: float | None = None
-    longitude: float | None = None
-    location: str | None = None
+    method: BrewingMethod
+    water_volume: int
+    coffee_amount: int
+    grind_size: GrindSize
     created_at: str
-    rating: RatingResponse | None = None
-    coffee: CoffeeNested | None = None
+    rating: int

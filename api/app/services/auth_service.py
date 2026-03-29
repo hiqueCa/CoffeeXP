@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, timezone
+from fastapi.security import HTTPBearer
 from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -7,6 +8,7 @@ from app.config import settings
 from app.repositories.user_repository import UserRepository
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+security = HTTPBearer()
 
 
 class AuthService:
@@ -33,6 +35,18 @@ class AuthService:
 
         bearer_token = self.create_access_token({"sub": user.email})
         return bearer_token
+
+    def get_current_user(self, token: str) -> User:
+        payload = self.decode_access_token(token)
+        if payload is None:
+            raise ValueError("Invalid or expired token")
+
+        email = payload.get("sub")
+        user = self.repository.get_by_email(email)
+        if user is None:
+            raise ValueError("User not found")
+
+        return user
 
     @staticmethod
     def hash_password(password: str) -> str:
