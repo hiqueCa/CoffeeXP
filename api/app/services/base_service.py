@@ -1,7 +1,11 @@
+from typing import Generic, Type, TypeVar
+
 from app.domain.user import User
 
+TRepository = TypeVar("TRepository")
 
-class BaseService:
-    def __init__(self, repository, user: User | None = None):
+
+class BaseService(Generic[TRepository]):
+    def __init__(self, repository: Type[TRepository], user: User | None = None):
         self.repository = repository
         self.user = user

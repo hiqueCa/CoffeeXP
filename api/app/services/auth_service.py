@@ -11,9 +11,9 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
 
 
-class AuthService(BaseService):
+class AuthService(BaseService[UserRepository]):
 
-    def __init__(self, repository: UserRepository):
+    def __init__(self, repository):
         super().__init__(repository)
 
     def register_user(self, email: str, password: str):
