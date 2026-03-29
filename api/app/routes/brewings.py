@@ -20,6 +20,6 @@ def create_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing_service = BrewingService(session, BrewingRepository(session), current_user)
+    brewing_service = BrewingService(BrewingRepository(session), current_user)
     brewing = brewing_service.create_brewing(data)
     return brewing

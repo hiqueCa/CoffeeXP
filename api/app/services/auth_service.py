@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta, timezone
 from fastapi.security import HTTPBearer
-from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from app.domain.user import User
@@ -13,8 +12,7 @@ security = HTTPBearer()
 
 class AuthService:
 
-    def __init__(self, session: Session, repository: UserRepository):
-        self.session = session
+    def __init__(self, repository: UserRepository):
         self.repository = repository
 
     def register_user(self, email: str, password: str):

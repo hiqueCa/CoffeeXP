@@ -1,4 +1,3 @@
-from sqlalchemy.orm import Session
 from app.domain.user import User
 from app.repositories.brewing_repository import BrewingRepository
 from app.domain.brewing import Brewing
@@ -7,10 +6,7 @@ from app.schemas.brewing import BrewingCreate
 
 class BrewingService:
 
-    def __init__(
-        self, session: Session, repository: BrewingRepository, user: User | None = None
-    ):
-        self.session = session
+    def __init__(self, repository: BrewingRepository, user: User | None = None):
         self.repository = repository
         self.user = user
 

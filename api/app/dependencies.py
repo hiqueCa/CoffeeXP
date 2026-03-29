@@ -16,7 +16,7 @@ def get_current_user(
     session: Session = Depends(get_session),
 ) -> User:
     token_str = token if token else credentials.credentials
-    auth_service = AuthService(session, UserRepository(session))
+    auth_service = AuthService(UserRepository(session))
 
     try:
         return auth_service.get_current_user(token_str)
