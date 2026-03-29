@@ -5,15 +5,16 @@ from passlib.context import CryptContext
 from app.domain.user import User
 from app.config import settings
 from app.repositories.user_repository import UserRepository
+from app.services.base_service import BaseService
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
 
 
-class AuthService:
+class AuthService(BaseService):
 
     def __init__(self, repository: UserRepository):
-        self.repository = repository
+        super().__init__(repository)
 
     def register_user(self, email: str, password: str):
         existing_user = self.repository.get_by_email(email)
