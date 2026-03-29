@@ -21,3 +21,10 @@ def test_get_current_user_raises_for_invalid_token(session):
     with pytest.raises(HTTPException) as exc_info:
         get_current_user(token="bad-token", session=session)
     assert exc_info.value.status_code == 401
+
+
+def test_get_current_user_raises_for_nonexistent_user(session):
+    token = AuthService.create_access_token({"sub": "noone@example.com"})
+    with pytest.raises(HTTPException) as exc_info:
+        get_current_user(token=token, session=session)
+    assert exc_info.value.status_code == 401

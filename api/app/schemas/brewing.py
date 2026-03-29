@@ -1,3 +1,4 @@
+from datetime import datetime
 from enum import Enum
 
 from pydantic import BaseModel
@@ -44,8 +45,9 @@ class BrewingCreate(BaseModel):
 class BrewingResponse(BaseModel):
     id: int
     method: BrewingMethod
+    coffee: CoffeeNested
     water_volume: int
     coffee_amount: int
     grind_size: GrindSize
-    created_at: str
+    created_at: datetime
     rating: int
