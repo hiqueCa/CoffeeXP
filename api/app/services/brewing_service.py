@@ -16,3 +16,10 @@ class BrewingService(BaseService[BrewingRepository]):
         brewing = self.repository.add(Brewing(**brewing_dict))
 
         return brewing
+
+    def get_brewing_by_id(self, brewing_id: int) -> Brewing:
+        brewing = self.repository.get(brewing_id)
+        if not brewing:
+            raise ValueError("Brewing not found")
+
+        return brewing

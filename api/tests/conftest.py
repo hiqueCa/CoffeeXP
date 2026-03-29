@@ -44,7 +44,14 @@ def client_fixture(session: Session):
 
 
 from app.domain.user import User
+from app.repositories.brewing_repository import BrewingRepository
 from app.services.auth_service import AuthService
+from tests.factories.brewing_factory import BrewingFactory
+
+
+@pytest.fixture(autouse=True)
+def set_factory_repositories(session: Session):
+    BrewingFactory._repository = BrewingRepository(session)
 
 
 @pytest.fixture(name="auth_header")

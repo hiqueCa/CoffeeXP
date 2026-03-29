@@ -1,5 +1,5 @@
 from app.schemas.brewing import BrewingMethod, GrindSize, RoastLevel
-
+from tests.factories.brewing_factory import BrewingFactory
 
 def test_create_brewing(client, auth_header):
     response = client.post(
@@ -32,3 +32,12 @@ def test_create_brewing(client, auth_header):
     assert data["water_volume"] == 150
     assert data["coffee_amount"] == 15
     assert data["rating"] == 4
+
+
+def test_get_brewing(client, auth_header):
+    brewing = BrewingFactory.create()
+    response = client.get(f"/brewings/{brewing.id}", headers=auth_header)
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["id"] == brewing.id
