@@ -13,6 +13,7 @@ class BrewingService(BaseService[BrewingRepository]):
         brewing_dict = brewing_data.model_dump()
         if self.user:
             brewing_dict["user_id"] = self.user.id
+
         brewing = self.repository.add(Brewing(**brewing_dict))
 
         return brewing

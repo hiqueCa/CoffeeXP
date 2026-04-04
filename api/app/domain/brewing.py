@@ -11,7 +11,10 @@ class Brewing:
         coffee_amount: int,
         rating: int,
         user_id: int = None,
+        id: int | None = None,
     ):
+        self.id = id
+
         self.user_id = user_id
         self.method = method
         self.coffee = coffee
