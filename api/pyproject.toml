@@ -34,5 +34,5 @@ dev = [
     "black>=24.0.0",
     "autoflake>=2.3.3",
     "factory-boy>=3.3.3",
-    "pytest-watch>=4.2.0",
+    "pytest-watcher>=0.6.3",
 ]

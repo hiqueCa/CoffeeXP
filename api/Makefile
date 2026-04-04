@@ -12,6 +12,9 @@ dev:
 test:
 	uv run pytest -vv $(FILE)
 
+test-watch:
+	uv run pytest-watcher .
+
 test-cov:
 	uv run pytest --cov --cov-report=html -v
 
