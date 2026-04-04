@@ -6,6 +6,7 @@ TRepository = TypeVar("TRepository")
 
 
 class BaseService(Generic[TRepository]):
-    def __init__(self, repository: Type[TRepository], user: User | None = None):
+
+    def __init__(self, repository: Type[TRepository], user: User):
         self.repository = repository
         self.user = user

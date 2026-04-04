@@ -11,10 +11,14 @@ class BrewingService(BaseService[BrewingRepository]):
 
     def create_brewing(self, brewing_data: BrewingCreate) -> Brewing:
         brewing_dict = brewing_data.model_dump()
-        if self.user:
-            brewing_dict["user_id"] = self.user.id
 
-        brewing = self.repository.add(Brewing(**brewing_dict))
+        brewing = Brewing(**brewing_dict)
+        if self.user.id is None:
+            raise ValueError("User id is required")
+
+        brewing.user_id = self.user.id
+
+        brewing = self.repository.add(brewing)
 
         return brewing
 
