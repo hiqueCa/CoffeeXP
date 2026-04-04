@@ -25,7 +25,7 @@ def register(request: RegisterRequest, session: Session = Depends(get_session)):
     try:
         auth_service = AuthService(UserRepository(session))
         user = auth_service.register_user(request.email, request.password)
-    except ValueError as e:
+    except Exception as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
     return RegisterResponse(id=user.id, email=user.email)

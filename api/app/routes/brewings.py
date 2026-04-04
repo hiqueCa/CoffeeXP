@@ -34,3 +34,4 @@ def get_brewing(
     brewing_service = BrewingService(BrewingRepository(session), current_user)
     brewing = brewing_service.get_brewing_by_id(brewing_id)
     return brewing
+
