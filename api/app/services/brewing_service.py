@@ -24,3 +24,7 @@ class BrewingService(BaseService[BrewingRepository]):
             raise ValueError("Brewing not found")
 
         return brewing
+
+    def list_brewings(self) -> list[Brewing]:
+        brewings = self.repository.list_by_user(self.user.id)
+        return brewings

@@ -56,3 +56,31 @@ def test_get_brewing(client, auth_header):
     assert response.status_code == 200
     data = response.json()
     assert data["id"] == brewing_id
+
+
+def test_list_brewings(client, auth_header):
+    for i in range(3):
+        client.post(
+            "/brewings/",
+            json={
+                "coffee": {
+                    "name": f"Morning Brew {i}",
+                    "country": "Brazil",
+                    "price": 15.00 + i,
+                    "roast_level": RoastLevel.medium.value,
+                },
+                "method": BrewingMethod.aeropress.value,
+                "grind_size": GrindSize.medium.value,
+                "water_volume": 150,
+                "coffee_amount": 15,
+                "rating": 4,
+            },
+            headers=auth_header,
+        )
+
+    response = client.get("/brewings/", headers=auth_header)
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data) >= 3
+    for i in range(3):
+        assert any(brewing["coffee"]["name"] == f"Morning Brew {i}" for brewing in data)

@@ -9,4 +9,4 @@ class UserRepository(BaseRepository[User]):
         super().__init__(session, User)
 
     def get_by_email(self, email: str) -> User | None:
-        return self.session.query(User).filter_by(email=email).first()
+        return self.session.query(self.entity).filter_by(email=email).first()
