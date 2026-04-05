@@ -1,4 +1,4 @@
-from typing import Generic, Type, TypeVar
+from typing import Any, Generic, Type, TypeVar
 from app.repositories.abstract_repository import AbstractRepository
 from sqlalchemy.orm import Session
 
@@ -10,8 +10,8 @@ class BaseRepository(AbstractRepository, Generic[TEntity]):
         self.session = session
         self.entity = entity
 
-    def get(self, entity_id: int) -> TEntity | None:
-        return self.session.query(self.entity).filter_by(id=entity_id).first()
+    def get(self, **conditions: Any) -> TEntity | None:
+        return self.session.query(self.entity).filter_by(**conditions).first()
 
     def list(self) -> list[TEntity]:
         return self.session.query(self.entity).all()

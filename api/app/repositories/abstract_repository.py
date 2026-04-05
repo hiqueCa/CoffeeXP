@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from typing import Any
 
 class AbstractRepository(ABC):
     @abstractmethod
@@ -7,7 +7,7 @@ class AbstractRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get(self, entity_id):
+    def get(self, **conditions: Any):
         raise NotImplementedError
 
     @abstractmethod

@@ -22,8 +22,8 @@ class BrewingService(BaseService[BrewingRepository]):
 
         return brewing
 
-    def get_brewing_by_id(self, brewing_id: int) -> Brewing:
-        brewing = self.repository.get(brewing_id)
+    def get_brewing_by_id(self, id: int) -> Brewing:
+        brewing = self.repository.get(id=id, user_id=self.user.id)
         if not brewing:
             raise ValueError("Brewing not found")
 

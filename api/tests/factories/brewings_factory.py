@@ -1,15 +1,17 @@
 from sqlalchemy.orm import Session
 
 from app.domain.brewing import Brewing
+from app.domain.user import User
 from app.schemas.brewing import BrewingMethod, CoffeeNested, GrindSize
 from tests.factories.users_factory import UsersFactory
 
 
 class BrewingsFactory:
     @staticmethod
-    def create(amount: int, session: Session) -> list[Brewing]:
+    def create(amount: int, session: Session, user: User = None) -> list[Brewing]:
         brewings = []
-        user = UsersFactory.create(session=session)
+        if user is None:
+            user = UsersFactory.create(session=session)
 
         for i in range(amount):
             brewing = Brewing(

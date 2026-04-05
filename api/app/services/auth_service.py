@@ -17,7 +17,7 @@ class AuthService(BaseService[UserRepository]):
         super().__init__(repository)
 
     def register_user(self, email: str, password: str):
-        existing_user = self.repository.get_by_email(email)
+        existing_user = self.repository.get(email=email)
         if existing_user:
             raise ValueError("Email already registered")
 
@@ -27,7 +27,7 @@ class AuthService(BaseService[UserRepository]):
         return user
 
     def authenticate_user(self, email: str, password: str) -> str:
-        user = self.repository.get_by_email(email)
+        user = self.repository.get(email=email)
 
         if not user or not self.verify_password(password, user.hashed_password):
             raise ValueError("Invalid credentials")
@@ -41,7 +41,7 @@ class AuthService(BaseService[UserRepository]):
             raise ValueError("Invalid or expired token")
 
         email = payload.get("sub")
-        user = self.repository.get_by_email(email)
+        user = self.repository.get(email=email)
         if user is None:
             raise ValueError("User not found")
 

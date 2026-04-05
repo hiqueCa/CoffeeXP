@@ -1,3 +1,4 @@
+from app.domain.user import User
 from app.schemas.brewing import BrewingMethod, GrindSize, RoastLevel
 from tests.factories.brewings_factory import BrewingsFactory
 
@@ -33,8 +34,9 @@ def test_create_brewing(client, auth_header):
     assert data["rating"] == 4
 
 
-def test_get_brewing(client, auth_header, session):
-    brewing = BrewingsFactory.create(1, session=session)[0]
+def test_get_brewing_returns_current_user_brewing_only(client, auth_header, session):
+    current_user = session.query(User).first()
+    brewing = BrewingsFactory.create(1, session=session, user=current_user)[0]
     response = client.get(f"/brewings/{brewing.id}", headers=auth_header)
 
     assert response.status_code == 200
@@ -42,29 +44,28 @@ def test_get_brewing(client, auth_header, session):
     assert data["id"] == brewing.id
 
 
-def test_list_brewings(client, auth_header):
-    for i in range(3):
-        client.post(
-            "/brewings/",
-            json={
-                "coffee": {
-                    "name": f"Morning Brew {i}",
-                    "country": "Brazil",
-                    "price": 15.00 + i,
-                    "roast_level": RoastLevel.medium.value,
-                },
-                "method": BrewingMethod.aeropress.value,
-                "grind_size": GrindSize.medium.value,
-                "water_volume": 150,
-                "coffee_amount": 15,
-                "rating": 4,
-            },
-            headers=auth_header,
-        )
+def test_get_brewing_returns_404_for_other_user_brewing(client, auth_header, session):
+    other_user_brewing = BrewingsFactory.create(1, session=session)[0]
+    response = client.get(f"/brewings/{other_user_brewing.id}", headers=auth_header)
 
-    response = client.get("/brewings/", headers=auth_header)
+    assert response.status_code == 404
+
+
+def test_list_brewings_returns_current_user_brewings_only(client, auth_header, session):
+    current_user = session.query(User).first()
+    current_user_brewings = BrewingsFactory.create(
+        3, session=session, user=current_user
+    )
+    other_user_brewings = BrewingsFactory.create(2, session=session)
+
+    response = client.get("/brewings", headers=auth_header)
     assert response.status_code == 200
+
     data = response.json()
     assert len(data) >= 3
-    for i in range(3):
-        assert any(brewing["coffee"]["name"] == f"Morning Brew {i}" for brewing in data)
+    assert all(
+        brewing["id"] in [b.id for b in current_user_brewings] for brewing in data
+    )
+    assert all(
+        brewing["id"] not in [b.id for b in other_user_brewings] for brewing in data
+    )

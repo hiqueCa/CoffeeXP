@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.database import get_session
@@ -22,6 +22,7 @@ def create_brewing(
 ):
     brewing_service = BrewingService(BrewingRepository(session), current_user)
     brewing = brewing_service.create_brewing(data)
+
     return brewing
 
 
@@ -31,8 +32,12 @@ def get_brewing(
     session: Session = Depends(get_session),
     current_user: User = Depends(get_current_user),
 ):
-    brewing_service = BrewingService(BrewingRepository(session), current_user)
-    brewing = brewing_service.get_brewing_by_id(brewing_id)
+    try:
+        brewing_service = BrewingService(BrewingRepository(session), current_user)
+        brewing = brewing_service.get_brewing_by_id(brewing_id)
+    except ValueError as e:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
+
     return brewing
 
 
