@@ -1,3 +1,5 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.database import get_session
@@ -21,7 +23,9 @@ router = APIRouter(prefix="/auth", tags=["auth"])
         status.HTTP_400_BAD_REQUEST: {"description": "Bad Request"},
     },
 )
-def register(request: RegisterRequest, session: Session = Depends(get_session)):
+def register(
+    request: RegisterRequest, session: Annotated[Session, Depends(get_session)]
+):
     try:
         auth_service = AuthService(UserRepository(session))
         user = auth_service.register_user(request.email, request.password)
@@ -40,7 +44,7 @@ def register(request: RegisterRequest, session: Session = Depends(get_session)):
         }
     },
 )
-def login(request: LoginRequest, session: Session = Depends(get_session)):
+def login(request: LoginRequest, session: Annotated[Session, Depends(get_session)]):
     try:
         auth_service = AuthService(UserRepository(session))
         token = auth_service.authenticate_user(request.email, request.password)

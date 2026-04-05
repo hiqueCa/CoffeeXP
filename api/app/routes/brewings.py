@@ -1,3 +1,5 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -17,8 +19,8 @@ router = APIRouter(prefix="/brewings", tags=["brewings"])
 @router.post("/", response_model=BrewingResponse, status_code=status.HTTP_201_CREATED)
 def create_brewing(
     data: BrewingCreate,
-    session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
+    session: Annotated[Session, Depends(get_session)],
+    current_user: Annotated[User, Depends(get_current_user)],
 ):
     brewing_service = BrewingService(BrewingRepository(session), current_user)
     brewing = brewing_service.create_brewing(data)
@@ -29,8 +31,8 @@ def create_brewing(
 @router.get("/{brewing_id}", response_model=BrewingResponse)
 def get_brewing(
     brewing_id: int,
-    session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
+    session: Annotated[Session, Depends(get_session)],
+    current_user: Annotated[User, Depends(get_current_user)],
 ):
     try:
         brewing_service = BrewingService(BrewingRepository(session), current_user)
@@ -43,8 +45,8 @@ def get_brewing(
 
 @router.get("/", response_model=list[BrewingResponse])
 def list_brewings(
-    session: Session = Depends(get_session),
-    current_user: User = Depends(get_current_user),
+    session: Annotated[Session, Depends(get_session)],
+    current_user: Annotated[User, Depends(get_current_user)],
 ):
     brewing_service = BrewingService(BrewingRepository(session), current_user)
     brewings = brewing_service.list_brewings()
