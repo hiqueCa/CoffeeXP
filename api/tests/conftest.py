@@ -1,7 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
 from app.database.schemas import metadata
-from app.domain.brewing import Brewing
 
 from app.config import settings
 from app.main import app
@@ -11,34 +10,12 @@ from sqlalchemy.orm import Session
 
 
 from app.domain.user import User
-from app.schemas.brewing import BrewingMethod, CoffeeNested, GrindSize, RoastLevel
 from app.services.auth_service import AuthService
 
 test_engine = create_engine(
     settings.test_database_url or "sqlite://",
     connect_args={"check_same_thread": False} if not settings.test_database_url else {},
 )
-
-
-@pytest.fixture(name="create_test_brewings")
-def test_brewings_fixture(session: Session):
-    for i in range(5):
-        brewing = Brewing(
-            coffee=CoffeeNested(
-                name=f"Test Coffee {i}",
-                country="Test Country",
-                price=10.0 + i,
-                roast_level=RoastLevel.medium,
-            ),
-            method=BrewingMethod.aeropress,
-            grind_size=GrindSize.medium,
-            water_volume=150 + i * 10,
-            coffee_amount=15 + i,
-            rating=4,
-        )
-        session.add(brewing)
-
-    session.commit()
 
 
 @pytest.fixture(scope="session", autouse=True)
