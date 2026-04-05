@@ -49,6 +49,7 @@ def test_get_brewing_returns_404_for_other_user_brewing(client, auth_header, ses
     response = client.get(f"/brewings/{other_user_brewing.id}", headers=auth_header)
 
     assert response.status_code == 404
+    assert response.json()["detail"] == "Brewing not found"
 
 
 def test_list_brewings_returns_current_user_brewings_only(client, auth_header, session):
