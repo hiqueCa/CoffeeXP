@@ -13,8 +13,13 @@ class BaseRepository(AbstractRepository, Generic[TEntity]):
     def get(self, **conditions: Any) -> TEntity | None:
         return self.session.query(self.entity).filter_by(**conditions).first()
 
-    def list(self) -> list[TEntity]:
-        return self.session.query(self.entity).all()
+    def list(self, **conditions: Any) -> list[TEntity]:
+        query = self.session.query(self.entity)
+
+        if conditions:
+            query = query.filter_by(**conditions)
+
+        return query.all()
 
     def add(self, entity: TEntity) -> TEntity:
         self.session.add(entity)

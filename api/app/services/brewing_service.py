@@ -30,5 +30,5 @@ class BrewingService(BaseService[BrewingRepository]):
         return brewing
 
     def list_brewings(self) -> list[Brewing]:
-        brewings = self.repository.list_by_user(self.user.id)
+        brewings = self.repository.list(user_id=self.user.id)
         return brewings
