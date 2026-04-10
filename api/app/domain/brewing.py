@@ -10,7 +10,7 @@ class Brewing:
         water_volume: int,
         coffee_amount: int,
         rating: int,
-        user_id: int = None,
+        user_id: int | None = None,
         id: int | None = None,
     ):
         self.id = id

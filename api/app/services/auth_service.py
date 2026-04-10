@@ -13,7 +13,7 @@ security = HTTPBearer()
 
 class AuthService(BaseService[UserRepository]):
 
-    def __init__(self, repository):
+    def __init__(self, repository: UserRepository):
         super().__init__(repository)
 
     def register_user(self, email: str, password: str):

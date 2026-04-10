@@ -11,7 +11,7 @@ security = HTTPBearer()
 
 
 def get_current_user(
-    token: str = None,
+    token: str | None = None,
     credentials: HTTPAuthorizationCredentials = Depends(security),
     session: Session = Depends(get_session),
 ) -> User:

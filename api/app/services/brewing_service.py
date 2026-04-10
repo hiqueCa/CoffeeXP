@@ -1,3 +1,4 @@
+from app.domain.user import User
 from app.repositories.brewing_repository import BrewingRepository
 from app.domain.brewing import Brewing
 from app.schemas.brewing import BrewingCreate
@@ -6,8 +7,9 @@ from app.services.base_service import BaseService
 
 class BrewingService(BaseService[BrewingRepository]):
 
-    def __init__(self, repository, user):
+    def __init__(self, repository: BrewingRepository, user: User):
         super().__init__(repository, user)
+        self.user = user
 
     def create_brewing(self, brewing_data: BrewingCreate) -> Brewing:
         brewing_dict = brewing_data.model_dump()
