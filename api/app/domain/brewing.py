@@ -1,5 +1,6 @@
 from app.schemas.brewing import BrewingMethod, CoffeeNested, GrindSize
 
+
 class Brewing:
 
     def __init__(

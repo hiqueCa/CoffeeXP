@@ -43,6 +43,10 @@ brewing_table = Table(
 )
 
 mapper_registry.map_imperatively(User, user_table)
-mapper_registry.map_imperatively(Brewing, brewing_table, properties={
-    "user": relationship(User, lazy="joined"),
-})
+mapper_registry.map_imperatively(
+    Brewing,
+    brewing_table,
+    properties={
+        "user": relationship(User, lazy="joined"),
+    },
+)

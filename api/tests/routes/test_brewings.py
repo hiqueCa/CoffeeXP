@@ -2,6 +2,7 @@ from app.domain.user import User
 from app.schemas.brewing import BrewingMethod, GrindSize, RoastLevel
 from tests.factories.brewings_factory import BrewingsFactory
 
+
 def test_create_brewing(client, auth_header):
     response = client.post(
         "/brewings/",
