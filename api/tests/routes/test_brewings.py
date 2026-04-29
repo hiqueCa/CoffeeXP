@@ -44,7 +44,6 @@ def test_create_brewing(client, auth_header):
         BrewingNotes.citrus.value,
     ]
 
-
 def test_get_brewing_returns_current_user_brewing_only(client, auth_header, session):
     current_user = session.query(User).first()
     brewing = BrewingsFactory.create(1, session=session, user=current_user)[0]
@@ -53,6 +52,12 @@ def test_get_brewing_returns_current_user_brewing_only(client, auth_header, sess
     assert response.status_code == 200
     data = response.json()
     assert data["id"] == brewing.id
+    assert data["method"] == brewing.method
+    assert data["rating"] == brewing.rating
+    assert data["grind_size"] == brewing.grind_size
+    assert data["water_volume"] == brewing.water_volume
+    assert data["coffee_amount"] == brewing.coffee_amount
+    assert data["notes"] == brewing.notes
 
 
 def test_get_brewing_returns_404_for_other_user_brewing(client, auth_header, session):
