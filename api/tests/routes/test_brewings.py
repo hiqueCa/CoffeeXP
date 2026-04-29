@@ -44,6 +44,7 @@ def test_create_brewing(client, auth_header):
         BrewingNotes.citrus.value,
     ]
 
+
 def test_get_brewing_returns_current_user_brewing_only(client, auth_header, session):
     current_user = session.query(User).first()
     brewing = BrewingsFactory.create(1, session=session, user=current_user)[0]
