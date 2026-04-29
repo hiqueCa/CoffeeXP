@@ -1,5 +1,5 @@
 from app.domain.user import User
-from app.schemas.brewing import BrewingMethod, GrindSize, RoastLevel
+from app.schemas.brewing import BrewingMethod, BrewingNotes, GrindSize, RoastLevel
 from tests.factories.brewings_factory import BrewingsFactory
 
 
@@ -18,6 +18,11 @@ def test_create_brewing(client, auth_header):
             "water_volume": 150,
             "coffee_amount": 15,
             "rating": 4,
+            "notes": [
+                BrewingNotes.chocolate.value,
+                BrewingNotes.floral.value,
+                BrewingNotes.citrus.value,
+            ],
         },
         headers=auth_header,
     )
@@ -33,6 +38,11 @@ def test_create_brewing(client, auth_header):
     assert data["water_volume"] == 150
     assert data["coffee_amount"] == 15
     assert data["rating"] == 4
+    assert data["notes"] == [
+        BrewingNotes.chocolate.value,
+        BrewingNotes.floral.value,
+        BrewingNotes.citrus.value,
+    ]
 
 
 def test_get_brewing_returns_current_user_brewing_only(client, auth_header, session):

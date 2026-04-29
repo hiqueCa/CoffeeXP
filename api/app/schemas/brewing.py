@@ -26,6 +26,13 @@ class BrewingMethod(str, Enum):
     chemex = "Chemex"
 
 
+class BrewingNotes(str, Enum):
+    chocolate = "Chocolate"
+    citrus = "Citrus"
+    floral = "Floral"
+    fruity = "Fruity"
+
+
 class CoffeeNested(BaseModel):
     name: str
     country: str
@@ -40,6 +47,7 @@ class BrewingCreate(BaseModel):
     coffee_amount: int
     grind_size: GrindSize
     rating: int
+    notes: list[BrewingNotes]
 
 
 class BrewingResponse(BaseModel):
@@ -51,3 +59,4 @@ class BrewingResponse(BaseModel):
     grind_size: GrindSize
     created_at: datetime
     rating: int
+    notes: list[BrewingNotes]

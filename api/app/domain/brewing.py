@@ -1,5 +1,4 @@
-from app.schemas.brewing import BrewingMethod, CoffeeNested, GrindSize
-
+from app.schemas.brewing import BrewingMethod, BrewingNotes, CoffeeNested, GrindSize
 
 class Brewing:
 
@@ -11,6 +10,7 @@ class Brewing:
         water_volume: int,
         coffee_amount: int,
         rating: int,
+        notes: list[BrewingNotes],
         user_id: int | None = None,
         id: int | None = None,
     ):
@@ -23,3 +23,4 @@ class Brewing:
         self.grind_size = grind_size
         self.water_volume = water_volume
         self.coffee_amount = coffee_amount
+        self.notes = notes
