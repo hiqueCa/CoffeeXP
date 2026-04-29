@@ -40,6 +40,7 @@ brewing_table = Table(
     Column("water_volume", Integer, nullable=False),
     Column("coffee_amount", Integer, nullable=False),
     Column("rating", Integer, nullable=False),
+    Column("notes", JSONB, nullable=False, default=[]),
 )
 
 mapper_registry.map_imperatively(User, user_table)
