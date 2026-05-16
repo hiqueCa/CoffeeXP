@@ -11,6 +11,7 @@ import BrewingDetailPage from './pages/BrewingDetailPage'
 import NewBrewingPage from './pages/NewBrewingPage'
 import CoffeeListPage from './pages/CoffeeListPage'
 import CoffeeDetailPage from './pages/CoffeeDetailPage'
+import SandboxPage from './pages/SandboxPage'
 
 const queryClient = new QueryClient()
 const theme = createTheme()
@@ -25,6 +26,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/sandbox" element={<SandboxPage />} />
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route path="/" element={<BrewingListPage />} />
         <Route path="/brewings/new" element={<NewBrewingPage />} />
