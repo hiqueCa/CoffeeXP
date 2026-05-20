@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "test": "vitest"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -16,6 +16,7 @@
     "@mui/material": "^7.3.8",
     "@tanstack/react-query": "^5.90.21",
     "axios": "^1.13.5",
+    "prettier": "^3.8.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0"
