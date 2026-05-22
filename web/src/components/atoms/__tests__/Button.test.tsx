@@ -14,4 +14,13 @@ describe('Button', () => {
     screen.getByRole('button').click();
     expect(handleClick).toHaveBeenCalled();
   });
+
+  it('renders a starting icon when provided', () => {
+    render(
+      <Button onClick={() => {}} icon={<span>Icon</span>}>
+        Click me
+      </Button>,
+    );
+    expect(screen.getByText('Icon')).toBeInTheDocument();
+  });
 });
