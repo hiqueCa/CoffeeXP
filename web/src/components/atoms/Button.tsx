@@ -12,7 +12,7 @@ interface IButtonProps {
 
 const StyledButton = styled(MuiButton)({
   textTransform: 'none',
-  borderRadius: 16,
+  borderRadius: 9999,
 });
 
 export const Button = ({
