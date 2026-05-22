@@ -16,6 +16,16 @@ const themeOptions: ThemeOptions = {
       disabled: '#d7ccc8',
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          borderRadius: 16,
+        },
+      },
+    },
+  },
 };
 
 export const theme = createTheme(themeOptions);
