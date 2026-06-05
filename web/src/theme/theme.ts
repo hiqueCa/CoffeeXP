@@ -175,7 +175,9 @@ const transitions: TransitionsOptions = {
 }
 
 const themeOptions: ThemeOptions = {
-  cssVariables: true,
+  cssVariables: {
+    colorSchemeSelector: 'class'
+  },
   colorSchemes: {
     light: lightPalette,
     dark: darkPalette,
