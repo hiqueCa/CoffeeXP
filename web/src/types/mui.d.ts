@@ -1,6 +1,24 @@
 import '@mui/material/styles';
 
+export type SpacingFactors = {
+	f1: number;
+	f2: number;
+	f4: number;
+	f8: number;
+	f16: number;
+	f32: number;
+	f64: number;
+};
+
 declare module '@mui/material/styles' {
+	interface Theme {
+		spacingFactors: SpacingFactors;
+	}
+
+	interface ThemeOptions {
+		spacingFactors: SpacingFactors;
+	}
+
 	interface Easing {
 		emphasized: string;
 	}
@@ -14,13 +32,18 @@ declare module '@mui/material/styles' {
 		fontFamilyMonospace: FontFamily;
 		serif: FontFamily;
 	}
+
+	interface Shape {
+		radius: Record<'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full', number>;
+	}
 	interface ShapeOptions {
-		radius: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full', number>;
+		radius: Record<'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full', number>;
 	}
 
 	interface Palette {
 		tertiary: Palette['primary'];
 		surface: Palette['primary'];
+		border: Palette['primary'];
 		scrim: string;
 		ruleSoft: string;
 	}
@@ -28,6 +51,7 @@ declare module '@mui/material/styles' {
 	interface PaletteOptions {
 		tertiary?: PaletteOptions['primary'];
 		surface?: PaletteOptions['primary'];
+		border?: PaletteOptions['primary'];
 		scrim?: string;
 		ruleSoft?: string;
 	}

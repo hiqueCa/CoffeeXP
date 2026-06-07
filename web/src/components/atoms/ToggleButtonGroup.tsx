@@ -1,58 +1,76 @@
 import MuiToggleButtonGroup, {
-  toggleButtonGroupClasses,
+	toggleButtonGroupClasses,
+	type ToggleButtonGroupProps,
 } from '@mui/material/ToggleButtonGroup';
-import MuiToggleButton from '@mui/material/ToggleButton';
+import MuiToggleButton, {
+	type ToggleButtonProps,
+} from '@mui/material/ToggleButton';
 import { styled } from '@mui/material';
 import { useState } from 'react';
 
 interface IToggleButtonProps {
-  options: [string, ...string[]];
-  onChange: () => void;
+	options: [string, ...string[]];
+	onChange: () => void;
 }
 
-const StyledToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
-  borderRadius: 9999,
-  padding: 4,
-  gap: 1,
-  border: `2px solid ${theme.palette.primary.light}`,
-  [`& .${toggleButtonGroupClasses.grouped}`]: {
-    borderRadius: 9999,
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
-    '&.Mui-selected': {
-      backgroundColor: theme.palette.primary.light,
-    },
-  },
+const StyledToggleButtonGroup = styled(
+	MuiToggleButtonGroup,
+)<ToggleButtonGroupProps>(({ theme }) => ({
+	borderRadius: theme.shape.radius.full,
+	backgroundColor: 'transparent',
+	border: `${theme.spacing(theme.spacingFactors.f1)} solid ${theme.palette.border.main}`,
+	[`& .${toggleButtonGroupClasses.firstButton}`]: {
+		borderTopLeftRadius: theme.shape.radius.full,
+		borderTopRightRadius: theme.shape.radius.none,
+		borderBottomLeftRadius: theme.shape.radius.full,
+		borderBottomRightRadius: theme.shape.radius.none,
+	},
+	[`& .${toggleButtonGroupClasses.lastButton}`]: {
+		borderTopLeftRadius: theme.shape.radius.none,
+		borderTopRightRadius: theme.shape.radius.full,
+		borderBottomLeftRadius: theme.shape.radius.none,
+		borderBottomRightRadius: theme.shape.radius.full,
+	},
+	[`& .${toggleButtonGroupClasses.grouped}`]: {
+		'&:hover': {
+			backgroundColor: theme.palette.surface.containerLowest,
+		},
+		'&.Mui-selected': {
+			backgroundColor: theme.palette.secondary.container,
+		},
+	},
 }));
 
-const StyledToggleButton = styled(MuiToggleButton)({
-  textTransform: 'none',
-  border: 'none',
-});
+const StyledToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(
+	({ theme }) => ({
+		textTransform: 'none',
+		border: 'none',
+		color: theme.palette.secondary.onContainer,
+	}),
+);
 
 export const ToggleButtonGroup = ({
-  options,
-  onChange,
+	options,
+	onChange,
 }: IToggleButtonProps) => {
-  const initialActive = options[0];
-  const [active, setActive] = useState<string | null>(initialActive);
+	const initialActive = options[0];
+	const [active, setActive] = useState<string | null>(initialActive);
 
-  const handleToggle = (
-    _event: React.MouseEvent<HTMLElement>,
-    newActive: string | null,
-  ) => {
-    setActive(newActive);
-    onChange();
-  };
+	const handleToggle = (
+		_event: React.MouseEvent<HTMLElement>,
+		newActive: string | null,
+	) => {
+		setActive(newActive);
+		onChange();
+	};
 
-  return (
-    <StyledToggleButtonGroup value={active} onChange={handleToggle} exclusive>
-      {options.map((option) => (
-        <StyledToggleButton key={option} value={option}>
-          {option}
-        </StyledToggleButton>
-      ))}
-    </StyledToggleButtonGroup>
-  );
+	return (
+		<StyledToggleButtonGroup value={active} onChange={handleToggle} exclusive>
+			{options.map((option) => (
+				<StyledToggleButton key={option} value={option}>
+					{option}
+				</StyledToggleButton>
+			))}
+		</StyledToggleButtonGroup>
+	);
 };

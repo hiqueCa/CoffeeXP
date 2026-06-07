@@ -7,6 +7,7 @@ import {
 	type TransitionsOptions,
 	type TypographyVariantsOptions,
 } from '@mui/material';
+import type { SpacingFactors } from '../types/mui';
 
 const lightPalette: ColorSystemOptions = {
 	palette: {
@@ -46,6 +47,9 @@ const lightPalette: ColorSystemOptions = {
 			primary: '#221A12',
 			secondary: '#6B533F',
 			disabled: '#A48E76',
+		},
+		border: {
+			main: '#A48E76',
 		},
 		scrim: 'rgba(34,26,18,0.32)',
 		ruleSoft: '#E8DDC6',
@@ -89,8 +93,8 @@ const darkPalette: ColorSystemOptions = {
 };
 
 const shape: ShapeOptions = {
-	borderRadius: 12,
 	radius: {
+		none: 0,
 		xs: 4,
 		sm: 8,
 		md: 12,
@@ -98,6 +102,16 @@ const shape: ShapeOptions = {
 		xl: 28,
 		full: 9999,
 	},
+};
+
+const spacingFactors: SpacingFactors = {
+	f1: 1 / 8,
+	f2: 1 / 4,
+	f4: 1 / 2,
+	f8: 1,
+	f16: 2,
+	f32: 4,
+	f64: 8,
 };
 
 const shadows: Shadows = [
@@ -194,6 +208,7 @@ const themeOptions: ThemeOptions = {
 	shadows,
 	typography,
 	transitions,
+	spacingFactors,
 };
 
 export const theme = createTheme(themeOptions);
