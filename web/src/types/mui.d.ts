@@ -11,6 +11,10 @@ export type SpacingFactors = {
 	f64: number;
 };
 
+export type Border = {
+	default: string;
+};
+
 type Radius = Record<
 	'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full',
 	number
@@ -62,6 +66,7 @@ type CustomPaletteColor = {
 declare module '@mui/material/styles' {
 	interface ThemeVars {
 		spacingFactors: SpacingFactors;
+		border: Border;
 	}
 
 	interface Theme {

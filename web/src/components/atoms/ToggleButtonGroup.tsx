@@ -15,10 +15,10 @@ interface IToggleButtonProps {
 
 const StyledToggleButtonGroup = styled(
 	MuiToggleButtonGroup,
-)<ToggleButtonGroupProps>(({ theme: { vars, spacing } }) => ({
+)<ToggleButtonGroupProps>(({ theme: { vars } }) => ({
 	borderRadius: vars.shape.radius.full,
 	backgroundColor: vars.palette.background.transparent,
-	border: `${spacing(vars.spacingFactors.f1)} solid ${vars.palette.border.main}`,
+	border: `${vars.border.default} ${vars.palette.surface.outline}`,
 	[`& .${toggleButtonGroupClasses.firstButton}`]: {
 		borderTopLeftRadius: vars.shape.radius.full,
 		borderTopRightRadius: vars.shape.radius.none,

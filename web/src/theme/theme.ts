@@ -8,7 +8,7 @@ import {
 	type TransitionsOptions,
 	type TypographyVariantsOptions,
 } from '@mui/material';
-import type { SpacingFactors } from '../types/mui';
+import type { Border, SpacingFactors } from '../types/mui';
 
 const lightPalette: ColorSystemOptions = {
 	palette: {
@@ -43,15 +43,12 @@ const lightPalette: ColorSystemOptions = {
 			containerLow: '#FDE8D9',
 			containerHigh: '#ECE3D0',
 			containerHighest: '#FBCB92',
-			outline: '#DCCCB1',
+			outline: '#A48E76',
 		},
 		text: {
 			primary: '#221A12',
 			secondary: '#6B533F',
 			disabled: '#A48E76',
-		},
-		border: {
-			main: '#A48E76',
 		},
 		scrim: 'rgba(34,26,18,0.32)',
 		ruleSoft: '#E8DDC6',
@@ -86,6 +83,7 @@ const darkPalette: ColorSystemOptions = {
 		surface: {
 			main: '#1A140E',
 			containerHigh: '#312A22',
+			outline: '#998669',
 		},
 		text: {
 			primary: '#ECE3D2',
@@ -195,6 +193,10 @@ const typography: TypographyVariantsOptions = {
 	},
 };
 
+const border: Border = {
+	default: '1px solid',
+};
+
 const transitions: TransitionsOptions = {
 	easing: {
 		easeInOut: 'cubic-bezier(.2,0,0,1)',
@@ -210,6 +212,7 @@ const themeOptions: ThemeOptions | ThemeVars = {
 		light: lightPalette,
 		dark: darkPalette,
 	},
+	border,
 	shape,
 	shadows,
 	typography,
