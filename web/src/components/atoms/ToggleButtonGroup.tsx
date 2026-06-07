@@ -15,37 +15,37 @@ interface IToggleButtonProps {
 
 const StyledToggleButtonGroup = styled(
 	MuiToggleButtonGroup,
-)<ToggleButtonGroupProps>(({ theme }) => ({
-	borderRadius: theme.shape.radius.full,
-	backgroundColor: 'transparent',
-	border: `${theme.spacing(theme.spacingFactors.f1)} solid ${theme.palette.border.main}`,
+)<ToggleButtonGroupProps>(({ theme: { vars, spacing } }) => ({
+	borderRadius: vars.shape.radius.full,
+	backgroundColor: vars.palette.background.transparent,
+	border: `${spacing(vars.spacingFactors.f1)} solid ${vars.palette.border.main}`,
 	[`& .${toggleButtonGroupClasses.firstButton}`]: {
-		borderTopLeftRadius: theme.shape.radius.full,
-		borderTopRightRadius: theme.shape.radius.none,
-		borderBottomLeftRadius: theme.shape.radius.full,
-		borderBottomRightRadius: theme.shape.radius.none,
+		borderTopLeftRadius: vars.shape.radius.full,
+		borderTopRightRadius: vars.shape.radius.none,
+		borderBottomLeftRadius: vars.shape.radius.full,
+		borderBottomRightRadius: vars.shape.radius.none,
 	},
 	[`& .${toggleButtonGroupClasses.lastButton}`]: {
-		borderTopLeftRadius: theme.shape.radius.none,
-		borderTopRightRadius: theme.shape.radius.full,
-		borderBottomLeftRadius: theme.shape.radius.none,
-		borderBottomRightRadius: theme.shape.radius.full,
+		borderTopLeftRadius: vars.shape.radius.none,
+		borderTopRightRadius: vars.shape.radius.full,
+		borderBottomLeftRadius: vars.shape.radius.none,
+		borderBottomRightRadius: vars.shape.radius.full,
 	},
 	[`& .${toggleButtonGroupClasses.grouped}`]: {
 		'&:hover': {
-			backgroundColor: theme.palette.surface.containerLowest,
+			backgroundColor: vars.palette.surface.containerHigh,
 		},
 		'&.Mui-selected': {
-			backgroundColor: theme.palette.secondary.container,
+			backgroundColor: vars.palette.secondary.container,
 		},
 	},
 }));
 
 const StyledToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(
-	({ theme }) => ({
+	({ theme: { vars } }) => ({
 		textTransform: 'none',
 		border: 'none',
-		color: theme.palette.secondary.onContainer,
+		color: vars.palette.secondary.onContainer,
 	}),
 );
 

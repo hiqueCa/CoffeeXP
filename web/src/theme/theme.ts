@@ -4,6 +4,7 @@ import {
 	type Shadows,
 	type ShapeOptions,
 	type ThemeOptions,
+	type ThemeVars,
 	type TransitionsOptions,
 	type TypographyVariantsOptions,
 } from '@mui/material';
@@ -32,6 +33,7 @@ const lightPalette: ColorSystemOptions = {
 		},
 		background: {
 			default: '#FBF7EE',
+			transparent: 'transparent',
 		},
 		surface: {
 			main: '#FFFFFF',
@@ -39,7 +41,7 @@ const lightPalette: ColorSystemOptions = {
 			bright: '#FDF3E7',
 			containerLowest: '#FDF3E7',
 			containerLow: '#FDE8D9',
-			containerHigh: '#FCD9B6',
+			containerHigh: '#ECE3D0',
 			containerHighest: '#FBCB92',
 			outline: '#DCCCB1',
 		},
@@ -80,6 +82,10 @@ const darkPalette: ColorSystemOptions = {
 		},
 		background: {
 			default: '#1A140E',
+		},
+		surface: {
+			main: '#1A140E',
+			containerHigh: '#312A22',
 		},
 		text: {
 			primary: '#ECE3D2',
@@ -196,7 +202,7 @@ const transitions: TransitionsOptions = {
 	},
 };
 
-const themeOptions: ThemeOptions = {
+const themeOptions: ThemeOptions | ThemeVars = {
 	cssVariables: {
 		colorSchemeSelector: 'class',
 	},
