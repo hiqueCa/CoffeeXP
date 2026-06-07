@@ -1,7 +1,9 @@
+import { Typography } from '@mui/material';
+
 interface ITextProps {
 	label: string;
 }
 
 export const Text = ({ label }: ITextProps) => {
-	return <span>{label}</span>;
+	return <Typography>{label}</Typography>;
 };
