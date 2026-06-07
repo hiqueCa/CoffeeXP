@@ -3,27 +3,36 @@ import MuiButton, { type ButtonProps } from '@mui/material/Button';
 
 type ButtonVariant = Exclude<ButtonProps['variant'], 'text'>;
 
-interface IButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-  variant?: ButtonVariant;
-  icon?: React.ReactNode;
+interface IButtonProps extends ButtonProps {
+	children: React.ReactNode;
+	onClick: () => void;
+	variant?: ButtonVariant;
+	icon?: React.ReactNode;
 }
 
-const StyledButton = styled(MuiButton)({
-  textTransform: 'none',
-  borderRadius: 9999,
-});
+const StyledButton = styled(MuiButton)<IButtonProps>(
+	({ theme: { vars }, variant }) => ({
+		textTransform: 'none',
+		borderRadius: vars.shape.radius.full,
+		backgroundColor: vars.palette.background.transparent,
+		border: `${vars.border.default} ${vars.palette.surface.outline}`,
+		...(variant === 'contained' && {
+			backgroundColor: vars.palette.primary.container,
+			color: vars.palette.primary.onContainer,
+			border: 'none',
+		}),
+	}),
+);
 
 export const Button = ({
-  children,
-  onClick,
-  icon,
-  variant = 'contained',
+	children,
+	onClick,
+	icon,
+	variant = 'contained',
 }: IButtonProps) => {
-  return (
-    <StyledButton onClick={onClick} variant={variant} startIcon={icon}>
-      {children}
-    </StyledButton>
-  );
+	return (
+		<StyledButton onClick={onClick} variant={variant} startIcon={icon}>
+			{children}
+		</StyledButton>
+	);
 };
