@@ -1,16 +1,6 @@
 import '@mui/material/styles';
 import type { PaletteOptions } from '@mui/material/styles';
 
-export type SpacingFactors = {
-	f1: number;
-	f2: number;
-	f4: number;
-	f8: number;
-	f16: number;
-	f32: number;
-	f64: number;
-};
-
 export type Border = {
 	default: string;
 };
@@ -65,7 +55,6 @@ type CustomPaletteColor = {
 
 declare module '@mui/material/styles' {
 	interface ThemeVars {
-		spacingFactors: SpacingFactors;
 		border: Border;
 	}
 

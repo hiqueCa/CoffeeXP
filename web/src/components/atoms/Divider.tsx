@@ -6,9 +6,9 @@ interface IDividerProps {
 }
 
 const StyledDivider = styled(MuiDivider)<DividerProps>(
-	({ theme: { vars } }) => ({
+	({ theme: { vars, spacing } }) => ({
 		color: vars.palette.surface.outline,
-		gap: 12,
+		gap: spacing(),
 	}),
 );
 

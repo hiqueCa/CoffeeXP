@@ -8,7 +8,7 @@ import {
 	type TransitionsOptions,
 	type TypographyVariantsOptions,
 } from '@mui/material';
-import type { Border, SpacingFactors } from '../types/mui';
+import type { Border } from '../types/mui';
 
 const lightPalette: ColorSystemOptions = {
 	palette: {
@@ -106,16 +106,6 @@ const shape: ShapeOptions = {
 		xl: 28,
 		full: 9999,
 	},
-};
-
-const spacingFactors: SpacingFactors = {
-	f1: 1 / 8,
-	f2: 1 / 4,
-	f4: 1 / 2,
-	f8: 1,
-	f16: 2,
-	f32: 4,
-	f64: 8,
 };
 
 const shadows: Shadows = [
@@ -217,7 +207,6 @@ const themeOptions: ThemeOptions | ThemeVars = {
 	shadows,
 	typography,
 	transitions,
-	spacingFactors,
 };
 
 export const theme = createTheme(themeOptions);
