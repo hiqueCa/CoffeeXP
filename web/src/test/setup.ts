@@ -1,2 +1,3 @@
 import '@testing-library/jest-dom';
-import '../test/helpers';
+import '@testing-library/react';
+import '@test/helpers';
