@@ -13,6 +13,32 @@ interface IToggleButtonProps {
 	onChange: () => void;
 }
 
+export const ToggleButtonGroup = ({
+	options,
+	onChange,
+}: IToggleButtonProps) => {
+	const initialActive = options[0];
+	const [active, setActive] = useState<string | null>(initialActive);
+
+	const handleToggle = (
+		_event: React.MouseEvent<HTMLElement>,
+		newActive: string | null,
+	) => {
+		setActive(newActive);
+		onChange();
+	};
+
+	return (
+		<StyledToggleButtonGroup value={active} onChange={handleToggle} exclusive>
+			{options.map((option) => (
+				<StyledToggleButton key={option} value={option}>
+					{option}
+				</StyledToggleButton>
+			))}
+		</StyledToggleButtonGroup>
+	);
+};
+
 const StyledToggleButtonGroup = styled(
 	MuiToggleButtonGroup,
 )<ToggleButtonGroupProps>(({ theme: { vars } }) => ({
@@ -48,29 +74,3 @@ const StyledToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(
 		color: vars.palette.secondary.onContainer,
 	}),
 );
-
-export const ToggleButtonGroup = ({
-	options,
-	onChange,
-}: IToggleButtonProps) => {
-	const initialActive = options[0];
-	const [active, setActive] = useState<string | null>(initialActive);
-
-	const handleToggle = (
-		_event: React.MouseEvent<HTMLElement>,
-		newActive: string | null,
-	) => {
-		setActive(newActive);
-		onChange();
-	};
-
-	return (
-		<StyledToggleButtonGroup value={active} onChange={handleToggle} exclusive>
-			{options.map((option) => (
-				<StyledToggleButton key={option} value={option}>
-					{option}
-				</StyledToggleButton>
-			))}
-		</StyledToggleButtonGroup>
-	);
-};

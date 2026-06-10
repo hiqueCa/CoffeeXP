@@ -3,12 +3,25 @@ import MuiButton, { type ButtonProps } from '@mui/material/Button';
 
 type ButtonVariant = Exclude<ButtonProps['variant'], 'text'>;
 
-interface IButtonProps extends ButtonProps {
+export interface IButtonProps extends ButtonProps {
 	children: React.ReactNode;
 	onClick: () => void;
 	variant?: ButtonVariant;
 	icon?: React.ReactNode;
 }
+
+export const Button = ({
+	children,
+	onClick,
+	icon,
+	variant = 'contained',
+}: IButtonProps) => {
+	return (
+		<StyledButton onClick={onClick} variant={variant} startIcon={icon}>
+			{children}
+		</StyledButton>
+	);
+};
 
 const StyledButton = styled(MuiButton)<IButtonProps>(
 	({ theme: { vars }, variant }) => ({
@@ -23,16 +36,3 @@ const StyledButton = styled(MuiButton)<IButtonProps>(
 		}),
 	}),
 );
-
-export const Button = ({
-	children,
-	onClick,
-	icon,
-	variant = 'contained',
-}: IButtonProps) => {
-	return (
-		<StyledButton onClick={onClick} variant={variant} startIcon={icon}>
-			{children}
-		</StyledButton>
-	);
-};
