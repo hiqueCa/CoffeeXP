@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { screen } from '@testing-library/react';
-import { Button } from '../Button';
+import { Button } from '../button/Button';
 import { renderWithTheme } from '../../../test/helpers';
 
 describe('Button', () => {

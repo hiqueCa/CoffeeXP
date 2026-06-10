@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Text } from '../Text';
+import { Text } from '../text/Text';
 
 describe('Text', () => {
 	it('renders the specified label', async () => {

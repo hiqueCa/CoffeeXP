@@ -1,4 +1,4 @@
-import { ToggleButtonGroup } from '../ToggleButtonGroup';
+import { ToggleButtonGroup } from '../toggleButtonGroup/ToggleButtonGroup';
 import { screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { renderWithTheme } from '../../../test/helpers';

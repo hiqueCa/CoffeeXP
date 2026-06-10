@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { renderWithTheme } from '../../../test/helpers';
 import { screen } from '@testing-library/react';
-import { Divider } from '../Divider';
+import { Divider } from '../divider/Divider';
 
 describe('Divider', () => {
 	it('renders with a children when one is provided', () => {
