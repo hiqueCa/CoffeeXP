@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { screen } from '@testing-library/react';
-import { Button } from '../button/Button';
-import { renderWithTheme } from '../../../test/helpers';
+import { Button } from '@components/atoms/button';
+import { renderWithTheme } from '@test/helpers';
 
 describe('Button', () => {
 	it('renders the button with the correct text', () => {

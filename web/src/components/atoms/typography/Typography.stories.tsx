@@ -1,4 +1,4 @@
 import type { Story } from '@ladle/react';
-import { Text } from './text/Text';
+import { Typography } from '@components/atoms/typography';
 
-export const Default: Story = () => <Text label="Lorem Ipsum Dolor" />;
+export const Default: Story = () => <Typography label="Lorem Ipsum Dolor" />;
