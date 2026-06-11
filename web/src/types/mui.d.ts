@@ -1,52 +1,90 @@
 import '@mui/material/styles';
+import type { PaletteOptions } from '@mui/material/styles';
+
+export type Border = {
+	default: string;
+};
+
+type Radius = Record<
+	'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full',
+	number
+>;
+
+type CustomPalette = {
+	tertiary: Palette['primary'];
+	surface: Palette['primary'];
+	border: Palette['primary'];
+	background: Palette['background'];
+	scrim: string;
+	ruleSoft: string;
+};
+
+type CustomPaletteOptions = {
+	tertiary?: PaletteOptions['primary'];
+	surface?: PaletteOptions['primary'];
+	border?: PaletteOptions['primary'];
+	background?: PaletteOptions['background'];
+	scrim?: string;
+	ruleSoft?: string;
+};
+
+type CustomTypographyVariants = {
+	fontFamilyMonospace: FontFamily;
+	serif: FontFamily;
+};
+type CustomTypographyVariantsOptions = {
+	fontFamilyMonospace?: FontFamily;
+	serif?: FontFamily;
+};
+
+type CustomShapeOptions = {
+	radius?: Radius;
+};
+
+type CustomPaletteColor = {
+	container?: string;
+	onContainer?: string;
+	dim?: string;
+	bright?: string;
+	containerLowest?: string;
+	containerLow?: string;
+	containerHigh?: string;
+	containerHighest?: string;
+	outline?: string;
+};
 
 declare module '@mui/material/styles' {
-  interface Easing {
-    emphasized: string;
-  }
-  interface TypographyVariantsOptions {
-    fontFamilyMonospace: FontFamily;
-    serif: FontFamily;
-  }
-  interface ShapeOptions {
-    radius: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full', number>;
-  }
+	interface ThemeVars {
+		border: Border;
+	}
 
-  interface Palette {
-    tertiary: Palette['primary'];
-    surface: Palette['primary'];
-    scrim: string;
-    ruleSoft: string;
-  }
+	interface Theme {
+		vars: ThemeVars;
+	}
 
-  interface PaletteOptions {
-    tertiary?: PaletteOptions['primary'];
-    surface?: PaletteOptions['primary'];
-    scrim?: string;
-    ruleSoft?: string;
-  }
+	interface ThemeOptions {
+		vars?: ThemeVars;
+	}
 
-  interface PaletteColor {
-    container?: string;
-    onContainer?: string;
-    dim?: string;
-    bright?: string;
-    containerLowest?: string;
-    containerLow?: string;
-    containerHigh?: string;
-    containerHighest?: string;
-    outline?: string;
-  }
+	interface Easing {
+		emphasized: string;
+	}
 
-  interface SimplePaletteColorOptions {
-    container?: string;
-    onContainer?: string;
-    dim?: string;
-    bright?: string;
-    containerLowest?: string;
-    containerLow?: string;
-    containerHigh?: string;
-    containerHighest?: string;
-    outline?: string;
-  }
+	interface TypographyVariants extends CustomTypographyVariants {}
+	interface TypographyVariantsOptions extends CustomTypographyVariantsOptions {}
+
+	interface Shape {
+		radius: Radius;
+	}
+	interface ShapeOptions extends CustomShapeOptions {}
+
+	interface Palette extends CustomPalette {}
+	interface PaletteOptions extends CustomPaletteOptions {}
+
+	interface PaletteColor extends CustomPaletteColor {}
+	interface SimplePaletteColorOptions extends CustomPaletteColor {}
+
+	interface TypeBackground {
+		transparent?: string;
+	}
 }
