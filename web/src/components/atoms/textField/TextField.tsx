@@ -6,15 +6,22 @@ interface ITextFieldProps {
 	label: string;
 	required?: boolean;
 	type?: HTMLInputTypeAttribute;
+	placeholder?: string;
 }
 
-export const TextField = ({ label, required, type }: ITextFieldProps) => {
+export const TextField = ({
+	label,
+	required,
+	type,
+	placeholder,
+}: ITextFieldProps) => {
 	return (
 		<StyledTextField
 			label={label}
 			required={required}
 			slotProps={{ inputLabel: { shrink: true } }}
 			type={type}
+			placeholder={placeholder}
 		/>
 	);
 };
