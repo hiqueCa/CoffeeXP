@@ -5,7 +5,7 @@ type ButtonVariant = Exclude<ButtonProps['variant'], 'text'>;
 
 export interface IButtonProps extends ButtonProps {
 	children: React.ReactNode;
-	onClick: () => void;
+	onClick?: () => void;
 	variant?: ButtonVariant;
 	icon?: React.ReactNode;
 }

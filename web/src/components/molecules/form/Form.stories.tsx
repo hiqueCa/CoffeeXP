@@ -7,6 +7,7 @@ export const LoginForm: Story = () => (
 		<StyledFieldsContainer>
 			<Form.EmailInput />
 			<Form.PasswordInput />
+			<Form.SubmitButton>Lorem Ipsum</Form.SubmitButton>
 		</StyledFieldsContainer>
 	</Form>
 );
