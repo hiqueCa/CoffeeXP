@@ -27,6 +27,8 @@
   "devDependencies": {
     "@eslint/js": "catalog:web",
     "@ladle/react": "catalog:web",
+    "@tanstack/react-router-devtools": "catalog:web",
+    "@tanstack/router-plugin": "catalog:web",
     "@testing-library/jest-dom": "catalog:web",
     "@testing-library/react": "catalog:web",
     "@testing-library/user-event": "catalog:web",
@@ -42,7 +44,6 @@
     "typescript": "catalog:web",
     "typescript-eslint": "catalog:web",
     "vite": "catalog:web",
-    "vitest": "catalog:web",
-    "@tanstack/react-router-devtools": "catalog:web"
+    "vitest": "catalog:web"
   }
 }

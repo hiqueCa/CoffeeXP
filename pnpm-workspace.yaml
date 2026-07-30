@@ -1,3 +1,5 @@
+cleanupUnusedCatalogs: true
+catalogMode: "prefer"
 packages:
   - "apps/*"
 allowBuilds:
@@ -37,3 +39,4 @@ catalogs:
     "vitest": "^4.0.18"
     "@tanstack/react-router": "^1.170.18"
     "@tanstack/react-router-devtools": "^1.167.0"
+    "@tanstack/router-plugin": "^1.168.23"
