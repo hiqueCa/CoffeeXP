@@ -1,0 +1,16 @@
+{
+    "editor.defaultFormatter": "dprint.dprint",
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": "on",
+
+    // Prevent VSCode from opening Tanstack routeTree generated file when a route is changed: https://tanstack.com/router/latest/docs/installation/with-vite#ignoring-the-generated-route-tree-file
+    "files.readonlyInclude": {
+        "**/routeTree.gen.ts": true
+    },
+    "files.watcherExclude": {
+        "**/routeTree.gen.ts": true
+    },
+    "search.exclude": {
+        "**/routeTree.gen.ts": true
+    }
+}
