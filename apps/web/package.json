@@ -17,6 +17,7 @@
     "@mui/icons-material": "catalog:web",
     "@mui/material": "catalog:web",
     "@tanstack/react-query": "catalog:web",
+    "@tanstack/react-router": "catalog:web",
     "axios": "catalog:web",
     "prettier": "catalog:web",
     "react": "catalog:web",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "catalog:web",
+    "@ladle/react": "catalog:web",
     "@testing-library/jest-dom": "catalog:web",
     "@testing-library/react": "catalog:web",
     "@testing-library/user-event": "catalog:web",
@@ -41,6 +43,6 @@
     "typescript-eslint": "catalog:web",
     "vite": "catalog:web",
     "vitest": "catalog:web",
-    "@ladle/react": "catalog:web"
+    "@tanstack/react-router-devtools": "catalog:web"
   }
 }
