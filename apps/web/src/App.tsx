@@ -11,7 +11,6 @@ import CoffeeListPage from "./pages/CoffeeListPage";
 import LoginPage from "./pages/LoginPage";
 import NewBrewingPage from "./pages/NewBrewingPage";
 import RegisterPage from "./pages/RegisterPage";
-import SandboxPage from "./pages/SandboxPage";
 
 const queryClient = new QueryClient();
 const theme = createTheme();
@@ -26,7 +25,6 @@ function AppRoutes() {
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/sandbox" element={<SandboxPage />} />
       <Route
         element={
           <ProtectedRoute>
