@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter @coffeeExp/web dev",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
   }
 }

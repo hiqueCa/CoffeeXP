@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest",
-    "ladle": "ladle serve"
+    "ladle": "ladle serve",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "catalog:web",
