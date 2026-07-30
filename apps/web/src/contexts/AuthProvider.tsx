@@ -1,28 +1,28 @@
-import { useState, type ReactNode } from 'react'
-import { authApi } from '../api/auth'
-import type { LoginRequest, RegisterRequest } from '../api/auth'
-import { AuthContext } from './AuthContext'
+import { type ReactNode, useState } from "react";
+import { authApi } from "../api/auth";
+import type { LoginRequest, RegisterRequest } from "../api/auth";
+import { AuthContext } from "./AuthContext";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(
-    localStorage.getItem('token')
-  )
+    localStorage.getItem("token"),
+  );
 
   const login = async (data: LoginRequest) => {
-    const response = await authApi.login(data)
-    const newToken = response.data.access_token
-    localStorage.setItem('token', newToken)
-    setToken(newToken)
-  }
+    const response = await authApi.login(data);
+    const newToken = response.data.access_token;
+    localStorage.setItem("token", newToken);
+    setToken(newToken);
+  };
 
   const register = async (data: RegisterRequest) => {
-    await authApi.register(data)
-  }
+    await authApi.register(data);
+  };
 
   const logout = () => {
-    localStorage.removeItem('token')
-    setToken(null)
-  }
+    localStorage.removeItem("token");
+    setToken(null);
+  };
 
   return (
     <AuthContext.Provider
@@ -30,5 +30,5 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     >
       {children}
     </AuthContext.Provider>
-  )
+  );
 }

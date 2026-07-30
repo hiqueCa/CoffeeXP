@@ -1,28 +1,18 @@
-import { useQuery } from '@tanstack/react-query'
-import {
-  Typography,
-  Card,
-  CardContent,
-  CardActionArea,
-  Grid,
-  Chip,
-  Box,
-  CircularProgress,
-  Fab,
-} from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
-import { useNavigate } from 'react-router-dom'
-import { brewingsApi } from '../api/brewings'
-import type { Brewing } from '../api/brewings'
+import AddIcon from "@mui/icons-material/Add";
+import { Box, Card, CardActionArea, CardContent, Chip, CircularProgress, Fab, Grid, Typography } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { brewingsApi } from "../api/brewings";
+import type { Brewing } from "../api/brewings";
 
 export default function BrewingListPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { data: brewings, isLoading } = useQuery({
-    queryKey: ['brewings'],
+    queryKey: ["brewings"],
     queryFn: () => brewingsApi.list().then((r) => r.data),
-  })
+  });
 
-  if (isLoading) return <CircularProgress />
+  if (isLoading) return <CircularProgress />;
 
   return (
     <Box>
@@ -37,12 +27,10 @@ export default function BrewingListPage() {
                 <CardContent>
                   <Typography variant="h6">{brewing.coffee?.name}</Typography>
                   <Typography color="text.secondary">{brewing.coffee?.brand?.name}</Typography>
-                  <Box sx={{ mt: 1, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                  <Box sx={{ mt: 1, display: "flex", gap: 1, flexWrap: "wrap" }}>
                     <Chip label={brewing.method} size="small" />
                     <Chip label={`${brewing.grams}g / ${brewing.ml}ml`} size="small" variant="outlined" />
-                    {brewing.rating && (
-                      <Chip label={`${brewing.rating.overall}/5`} size="small" color="primary" />
-                    )}
+                    {brewing.rating && <Chip label={`${brewing.rating.overall}/5`} size="small" color="primary" />}
                   </Box>
                   {brewing.location && (
                     <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
@@ -58,9 +46,9 @@ export default function BrewingListPage() {
           </Grid>
         ))}
       </Grid>
-      <Fab color="primary" sx={{ position: 'fixed', bottom: 16, right: 16 }} onClick={() => navigate('/brewings/new')}>
+      <Fab color="primary" sx={{ position: "fixed", bottom: 16, right: 16 }} onClick={() => navigate("/brewings/new")}>
         <AddIcon />
       </Fab>
     </Box>
-  )
+  );
 }

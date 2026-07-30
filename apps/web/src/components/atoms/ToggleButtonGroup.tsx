@@ -1,9 +1,7 @@
-import MuiToggleButtonGroup, {
-  toggleButtonGroupClasses,
-} from '@mui/material/ToggleButtonGroup';
-import MuiToggleButton from '@mui/material/ToggleButton';
-import { styled } from '@mui/material';
-import { useState } from 'react';
+import { styled } from "@mui/material";
+import MuiToggleButton from "@mui/material/ToggleButton";
+import MuiToggleButtonGroup, { toggleButtonGroupClasses } from "@mui/material/ToggleButtonGroup";
+import { useState } from "react";
 
 interface IToggleButtonProps {
   options: [string, ...string[]];
@@ -17,18 +15,18 @@ const StyledToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
   border: `2px solid ${theme.palette.primary.light}`,
   [`& .${toggleButtonGroupClasses.grouped}`]: {
     borderRadius: 9999,
-    '&:hover': {
-      backgroundColor: 'transparent',
+    "&:hover": {
+      backgroundColor: "transparent",
     },
-    '&.Mui-selected': {
+    "&.Mui-selected": {
       backgroundColor: theme.palette.primary.light,
     },
   },
 }));
 
 const StyledToggleButton = styled(MuiToggleButton)({
-  textTransform: 'none',
-  border: 'none',
+  textTransform: "none",
+  border: "none",
 });
 
 export const ToggleButtonGroup = ({

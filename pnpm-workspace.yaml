@@ -1,7 +1,7 @@
 packages:
-  - 'apps/*'
+  - "apps/*"
 allowBuilds:
-  '@swc/core': true
+  "@swc/core": true
   esbuild: true
   msw: true
 
@@ -35,4 +35,3 @@ catalogs:
     "typescript-eslint": "^8.48.0"
     "vite": "^7.3.5"
     "vitest": "^4.0.18"
-

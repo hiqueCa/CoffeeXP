@@ -1,24 +1,24 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ThemeProvider, createTheme } from '@mui/material'
-import { AuthProvider } from './contexts/AuthProvider'
-import { useAuth } from './contexts/useAuth'
-import Layout from './components/Layout'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import BrewingListPage from './pages/BrewingListPage'
-import BrewingDetailPage from './pages/BrewingDetailPage'
-import NewBrewingPage from './pages/NewBrewingPage'
-import CoffeeListPage from './pages/CoffeeListPage'
-import CoffeeDetailPage from './pages/CoffeeDetailPage'
-import SandboxPage from './pages/SandboxPage'
+import { createTheme, ThemeProvider } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import { AuthProvider } from "./contexts/AuthProvider";
+import { useAuth } from "./contexts/useAuth";
+import BrewingDetailPage from "./pages/BrewingDetailPage";
+import BrewingListPage from "./pages/BrewingListPage";
+import CoffeeDetailPage from "./pages/CoffeeDetailPage";
+import CoffeeListPage from "./pages/CoffeeListPage";
+import LoginPage from "./pages/LoginPage";
+import NewBrewingPage from "./pages/NewBrewingPage";
+import RegisterPage from "./pages/RegisterPage";
+import SandboxPage from "./pages/SandboxPage";
 
-const queryClient = new QueryClient()
-const theme = createTheme()
+const queryClient = new QueryClient();
+const theme = createTheme();
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth()
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
 }
 
 function AppRoutes() {
@@ -27,7 +27,13 @@ function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/sandbox" element={<SandboxPage />} />
-      <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+      <Route
+        element={
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>
+        }
+      >
         <Route path="/" element={<BrewingListPage />} />
         <Route path="/brewings/new" element={<NewBrewingPage />} />
         <Route path="/brewings/:id" element={<BrewingDetailPage />} />
@@ -35,7 +41,7 @@ function AppRoutes() {
         <Route path="/coffees/:id" element={<CoffeeDetailPage />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
 export default function App() {
@@ -49,5 +55,5 @@ export default function App() {
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
-  )
+  );
 }

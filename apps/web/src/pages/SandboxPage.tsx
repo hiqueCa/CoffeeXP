@@ -1,5 +1,5 @@
 const SandboxPage = () => {
-  return <div>Sandbox Page</div>
-}
+  return <div>Sandbox Page</div>;
+};
 
-export default SandboxPage
+export default SandboxPage;

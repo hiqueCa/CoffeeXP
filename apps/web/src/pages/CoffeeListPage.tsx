@@ -1,17 +1,17 @@
-import { useQuery } from '@tanstack/react-query'
-import { Typography, Box, Card, CardContent, CardActionArea, Grid, CircularProgress } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
-import { coffeesApi } from '../api/coffees'
-import type { CoffeeDetail } from '../api/coffees'
+import { Box, Card, CardActionArea, CardContent, CircularProgress, Grid, Typography } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { coffeesApi } from "../api/coffees";
+import type { CoffeeDetail } from "../api/coffees";
 
 export default function CoffeeListPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { data: coffees, isLoading } = useQuery({
-    queryKey: ['coffees'],
+    queryKey: ["coffees"],
     queryFn: () => coffeesApi.list().then((r) => r.data),
-  })
+  });
 
-  if (isLoading) return <CircularProgress />
+  if (isLoading) return <CircularProgress />;
 
   return (
     <Box>
@@ -31,5 +31,5 @@ export default function CoffeeListPage() {
         ))}
       </Grid>
     </Box>
-  )
+  );
 }

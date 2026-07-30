@@ -10,7 +10,7 @@
 
 Coffee Exp is a minimalistic app built to help coffee enthusiasts track their brewing experiences — every pour-over, every espresso shot, every lazy French press Sunday morning. Log what you brewed, how you brewed it, rate the result, and over time build a personal archive of your coffee journey.
 
-Born out of a simple need: the creator loves coffee and kept forgetting which beans, ratios, and methods made that *one perfect cup*. Coffee Exp fixes that.
+Born out of a simple need: the creator loves coffee and kept forgetting which beans, ratios, and methods made that _one perfect cup_. Coffee Exp fixes that.
 
 ---
 
@@ -19,7 +19,7 @@ Born out of a simple need: the creator loves coffee and kept forgetting which be
 - **Brewing journal** — Record each session with method, grams, water volume, and free-form notes
 - **5-axis ratings** — Score flavor, acidity, aroma, appearance, and bitterness on a 1–5 scale (overall calculated automatically)
 - **Coffee & brand catalog** — Keep a personal inventory of beans you've tried, organized by brand and country
-- **Location tagging** — Remember *where* that great cup happened (GPS on mobile)
+- **Location tagging** — Remember _where_ that great cup happened (GPS on mobile)
 - **Multi-platform** — Web app for the desktop, mobile app for brewing on the go
 - **Clean & cozy UI** — Material UI on web, React Native Paper on mobile — no clutter, just coffee
 
@@ -77,11 +77,11 @@ cd coffee_exp
 docker-compose up
 ```
 
-| Service        | URL                        |
-| -------------- | -------------------------- |
-| API            | http://localhost:8000      |
-| Web            | http://localhost:3000      |
-| PostgreSQL Dev | localhost:5432             |
+| Service        | URL                   |
+| -------------- | --------------------- |
+| API            | http://localhost:8000 |
+| Web            | http://localhost:3000 |
+| PostgreSQL Dev | localhost:5432        |
 
 ### Manual setup
 
@@ -106,17 +106,17 @@ make dev
 
 **Available make commands:**
 
-| Command                          | Description                  |
-| -------------------------------- | ---------------------------- |
-| `make install`                   | Install dependencies         |
-| `make dev`                       | Start dev server             |
-| `make test`                      | Run tests                    |
-| `make test-cov`                  | Tests with HTML coverage     |
-| `make format`                    | Format code with Black       |
-| `make lint`                      | Check formatting             |
-| `make migrate`                   | Run pending migrations       |
-| `make migrate-new name="..."`    | Create a new migration       |
-| `make migrate-down`              | Rollback last migration      |
+| Command                       | Description              |
+| ----------------------------- | ------------------------ |
+| `make install`                | Install dependencies     |
+| `make dev`                    | Start dev server         |
+| `make test`                   | Run tests                |
+| `make test-cov`               | Tests with HTML coverage |
+| `make format`                 | Format code with Black   |
+| `make lint`                   | Check formatting         |
+| `make migrate`                | Run pending migrations   |
+| `make migrate-new name="..."` | Create a new migration   |
+| `make migrate-down`           | Rollback last migration  |
 
 </details>
 

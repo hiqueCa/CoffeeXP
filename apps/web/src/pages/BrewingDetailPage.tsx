@@ -1,33 +1,33 @@
-import { useParams, useNavigate } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import {
-  Typography,
   Box,
+  Button,
   Card,
   CardContent,
   Chip,
   CircularProgress,
-  Button,
-  Rating as MuiRating,
   Grid,
-} from '@mui/material'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { brewingsApi } from '../api/brewings'
+  Rating as MuiRating,
+  Typography,
+} from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { brewingsApi } from "../api/brewings";
 
 export default function BrewingDetailPage() {
-  const { id } = useParams<{ id: string }>()
-  const navigate = useNavigate()
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const { data: brewing, isLoading } = useQuery({
-    queryKey: ['brewing', id],
+    queryKey: ["brewing", id],
     queryFn: () => brewingsApi.get(Number(id)).then((r) => r.data),
-  })
+  });
 
-  if (isLoading) return <CircularProgress />
-  if (!brewing) return <Typography>Brewing not found</Typography>
+  if (isLoading) return <CircularProgress />;
+  if (!brewing) return <Typography>Brewing not found</Typography>;
 
   return (
     <Box>
-      <Button startIcon={<ArrowBackIcon />} onClick={() => navigate('/')}>Back</Button>
+      <Button startIcon={<ArrowBackIcon />} onClick={() => navigate("/")}>Back</Button>
       <Typography variant="h4" sx={{ mt: 2 }}>{brewing.coffee?.name}</Typography>
       <Typography variant="subtitle1" color="text.secondary">
         {brewing.coffee?.brand?.name} — {brewing.coffee?.brand?.country}
@@ -46,7 +46,7 @@ export default function BrewingDetailPage() {
             </Grid>
             <Grid size={{ xs: 6 }}>
               <Typography variant="body2" color="text.secondary">Location</Typography>
-              <Typography>{brewing.location || 'Not recorded'}</Typography>
+              <Typography>{brewing.location || "Not recorded"}</Typography>
             </Grid>
             <Grid size={{ xs: 6 }}>
               <Typography variant="body2" color="text.secondary">Date</Typography>
@@ -60,9 +60,9 @@ export default function BrewingDetailPage() {
         <Card sx={{ mt: 2 }}>
           <CardContent>
             <Typography variant="h6" gutterBottom>Rating ({brewing.rating.overall}/5)</Typography>
-            {(['flavor', 'acidic', 'aroma', 'appearance', 'bitter'] as const).map((field) => (
-              <Box key={field} sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                <Typography sx={{ width: 100, textTransform: 'capitalize' }}>{field}</Typography>
+            {(["flavor", "acidic", "aroma", "appearance", "bitter"] as const).map((field) => (
+              <Box key={field} sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                <Typography sx={{ width: 100, textTransform: "capitalize" }}>{field}</Typography>
                 <MuiRating value={brewing.rating![field]} readOnly max={5} />
               </Box>
             ))}
@@ -79,5 +79,5 @@ export default function BrewingDetailPage() {
         </Card>
       )}
     </Box>
-  )
+  );
 }

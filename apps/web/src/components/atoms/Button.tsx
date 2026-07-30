@@ -1,7 +1,7 @@
-import { styled } from '@mui/material';
-import MuiButton, { type ButtonProps } from '@mui/material/Button';
+import { styled } from "@mui/material";
+import MuiButton, { type ButtonProps } from "@mui/material/Button";
 
-type ButtonVariant = Exclude<ButtonProps['variant'], 'text'>;
+type ButtonVariant = Exclude<ButtonProps["variant"], "text">;
 
 interface IButtonProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ interface IButtonProps {
 }
 
 const StyledButton = styled(MuiButton)({
-  textTransform: 'none',
+  textTransform: "none",
   borderRadius: 9999,
 });
 
@@ -19,7 +19,7 @@ export const Button = ({
   children,
   onClick,
   icon,
-  variant = 'contained',
+  variant = "contained",
 }: IButtonProps) => {
   return (
     <StyledButton onClick={onClick} variant={variant} startIcon={icon}>

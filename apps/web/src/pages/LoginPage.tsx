@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { Box, Button, Container, TextField, Typography, Alert } from '@mui/material'
-import { useAuth } from '../contexts/useAuth'
+import { Alert, Box, Button, Container, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/useAuth";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const { login } = useAuth()
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
+    e.preventDefault();
+    setError("");
     try {
-      await login({ email, password })
-      navigate('/')
+      await login({ email, password });
+      navigate("/");
     } catch {
-      setError('Invalid credentials')
+      setError("Invalid credentials");
     }
-  }
+  };
 
   return (
     <Container maxWidth="sm">
-      <Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ mt: 8, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Typography variant="h4" gutterBottom>
           Coffee Exp
         </Typography>
-        {error && <Alert severity="error" sx={{ width: '100%', mb: 2 }}>{error}</Alert>}
-        <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
+        {error && <Alert severity="error" sx={{ width: "100%", mb: 2 }}>{error}</Alert>}
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
           <TextField
             label="Email"
             type="email"
@@ -56,5 +56,5 @@ export default function LoginPage() {
         </Typography>
       </Box>
     </Container>
-  )
+  );
 }
