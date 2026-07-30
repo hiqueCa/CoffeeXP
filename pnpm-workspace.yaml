@@ -40,3 +40,6 @@ catalogs:
     "@tanstack/react-router": "^1.170.18"
     "@tanstack/react-router-devtools": "^1.167.0"
     "@tanstack/router-plugin": "^1.168.23"
+
+catalog:
+  oxlint: ^1.76.0
