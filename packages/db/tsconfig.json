@@ -1,0 +1,3 @@
+{
+  "extends": "@coffeeExp/tsconfig/base.json"
+}

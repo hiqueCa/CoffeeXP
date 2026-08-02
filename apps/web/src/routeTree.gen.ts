@@ -57,14 +57,14 @@ const CoffeesNewRoute = CoffeesNewRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const BrewingsBrewingIdIndexRoute = BrewingsBrewingIdIndexRouteImport.update({
-  id: "/",
-  path: "/",
-  getParentRoute: () => BrewingsBrewingIdRoute,
+  id: "/brewings/$brewingId/",
+  path: "/brewings/$brewingId/",
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BrewingsBrewingIdEditRoute = BrewingsBrewingIdEditRouteImport.update({
-  id: "/edit",
-  path: "/edit",
-  getParentRoute: () => BrewingsBrewingIdRoute,
+  id: "/brewings/$brewingId/edit",
+  path: "/brewings/$brewingId/edit",
+  getParentRoute: () => rootRouteImport,
 } as any)
 const CoffeesCoffeeIdIndexRoute = CoffeesCoffeeIdIndexRouteImport.update({
   id: "/coffees/$coffeeId/",
@@ -167,7 +167,9 @@ export interface RootRouteChildren {
   CoffeesNewRoute: typeof CoffeesNewRoute
   BrewingsIndexRoute: typeof BrewingsIndexRoute
   CoffeesIndexRoute: typeof CoffeesIndexRoute
+  BrewingsBrewingIdEditRoute: typeof BrewingsBrewingIdEditRoute
   CoffeesCoffeeIdEditRoute: typeof CoffeesCoffeeIdEditRoute
+  BrewingsBrewingIdIndexRoute: typeof BrewingsBrewingIdIndexRoute
   CoffeesCoffeeIdIndexRoute: typeof CoffeesCoffeeIdIndexRoute
 }
 
@@ -224,17 +226,17 @@ declare module "@tanstack/react-router" {
     }
     "/brewings/$brewingId/": {
       id: "/brewings/$brewingId/"
-      path: "/"
+      path: "/brewings/$brewingId"
       fullPath: "/brewings/$brewingId/"
       preLoaderRoute: typeof BrewingsBrewingIdIndexRouteImport
-      parentRoute: typeof BrewingsBrewingIdRoute
+      parentRoute: typeof rootRouteImport
     }
     "/brewings/$brewingId/edit": {
       id: "/brewings/$brewingId/edit"
-      path: "/edit"
+      path: "/brewings/$brewingId/edit"
       fullPath: "/brewings/$brewingId/edit"
       preLoaderRoute: typeof BrewingsBrewingIdEditRouteImport
-      parentRoute: typeof BrewingsBrewingIdRoute
+      parentRoute: typeof rootRouteImport
     }
     "/coffees/$coffeeId/": {
       id: "/coffees/$coffeeId/"
@@ -261,7 +263,9 @@ const rootRouteChildren: RootRouteChildren = {
   CoffeesNewRoute: CoffeesNewRoute,
   BrewingsIndexRoute: BrewingsIndexRoute,
   CoffeesIndexRoute: CoffeesIndexRoute,
+  BrewingsBrewingIdEditRoute: BrewingsBrewingIdEditRoute,
   CoffeesCoffeeIdEditRoute: CoffeesCoffeeIdEditRoute,
+  BrewingsBrewingIdIndexRoute: BrewingsBrewingIdIndexRoute,
   CoffeesCoffeeIdIndexRoute: CoffeesCoffeeIdIndexRoute,
 }
 export const routeTree = rootRouteImport
