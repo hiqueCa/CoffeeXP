@@ -1,0 +1,12 @@
+{
+  "name": "@coffeeExp/auth",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "dprint fmt"
+  },
+  "dependencies": {
+    "better-auth": "catalog:"
+  }
+}
