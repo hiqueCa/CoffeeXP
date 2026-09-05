@@ -1,9 +1,8 @@
 packages:
   - packages/*
-  - tooling/*
 
 allowBuilds:
-  '@swc/core': true
+  "@swc/core": true
   esbuild: true
   msw: true
 
