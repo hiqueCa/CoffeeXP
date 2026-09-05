@@ -11,6 +11,7 @@
     "format": "pnpm -r format"
   },
   "devDependencies": {
-    "oxlint": "catalog:"
+    "oxlint": "catalog:",
+    "vitest": "catalog:"
   }
 }
