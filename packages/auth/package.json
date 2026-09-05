@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "format": "dprint fmt"
+    "format": "dprint fmt",
+    "lint": "oxlint ."
   },
   "dependencies": {
     "better-auth": "catalog:auth",
