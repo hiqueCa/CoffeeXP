@@ -26,12 +26,12 @@ importers:
     dependencies:
       '@coffeeExp/tsconfig':
         specifier: workspace:*
-        version: link:../tooling/tsconfig
+        version: link:../tsconfig
       better-auth:
         specifier: catalog:auth
         version: 1.6.25(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(vitest@4.1.10(@types/node@24.13.3)(jsdom@28.1.0(@noble/hashes@2.2.0))(msw@2.15.0(@types/node@24.13.3)(typescript@5.9.3))(vite@7.3.6(@types/node@24.13.3)(jiti@2.7.0)))
 
-  packages/tooling/tsconfig:
+  packages/tsconfig:
     dependencies:
       '@tsconfig/node-ts':
         specifier: ^23.6.4

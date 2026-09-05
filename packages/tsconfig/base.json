@@ -8,6 +8,7 @@
   "compilerOptions": {
     "strict": true,
     "skipLibCheck": true,
+    "module": "nodenext",
     "moduleResolution": "nodenext",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
