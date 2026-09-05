@@ -1,0 +1,19 @@
+{
+  "name": "@coffeeExp/db",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "dprint fmt",
+    "lint": "oxlint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "drizzle-orm": "catalog:db",
+    "pg": "catalog:db"
+  },
+  "devDependencies": {
+    "@types/pg": "catalog:db",
+    "drizzle-kit": "catalog:db"
+  }
+}
