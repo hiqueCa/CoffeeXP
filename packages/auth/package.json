@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "format": "dprint fmt",
-    "lint": "oxlint ."
+    "lint": "oxlint .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "better-auth": "catalog:auth",
