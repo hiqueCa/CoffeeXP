@@ -1,1 +1,1 @@
-export * from "./src/env.ts";
+export { parseEnv } from "./src/env.ts";
