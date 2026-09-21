@@ -31,20 +31,6 @@ services:
       timeout: 5s
       retries: 5
 
-  web:
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./web:/app
-      - /app/node_modules
-    environment:
-      VITE_API_URL: http://localhost:8000
-    depends_on:
-      - api
-
 volumes:
   dev_data:
   test_data:
