@@ -52,6 +52,9 @@ importers:
       '@coffeeExp/db':
         specifier: workspace:*
         version: link:../db
+      '@coffeeExp/env':
+        specifier: workspace:*
+        version: link:../env
       '@coffeeExp/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -64,6 +67,9 @@ importers:
       '@coffeeExp/env':
         specifier: workspace:*
         version: link:../env
+      '@coffeeExp/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       drizzle-orm:
         specifier: catalog:db
         version: 1.0.0-rc.4(@types/pg@8.23.1)(pg@8.23.0)(zod@4.5.4)
