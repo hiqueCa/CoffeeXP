@@ -13,7 +13,7 @@ try {
 
 const env = parseEnv(process.env);
 
-export const auth = betterAuth({
+export const authServer = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
   }),
