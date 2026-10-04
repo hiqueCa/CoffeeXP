@@ -6,7 +6,13 @@
   "scripts": {
     "format": "dprint fmt",
     "lint": "oxlint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:down": "docker compose down -v",
+    "db:up": "docker compose up -d",
+    "db:studio": "drizzle-kit studio",
+    "migrations:push": "drizzle-kit push",
+    "migrations:generate": "drizzle-kit generate",
+    "migrations:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "drizzle-orm": "catalog:db",
