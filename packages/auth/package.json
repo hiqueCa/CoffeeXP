@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "better-auth": "catalog:auth",
-    "@coffeeExp/tsconfig": "workspace:*"
+    "@coffeeExp/tsconfig": "workspace:*",
+    "@coffeeExp/db": "workspace:*"
   }
 }

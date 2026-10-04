@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "drizzle-orm": "catalog:db",
-    "pg": "catalog:db"
+    "pg": "catalog:db",
+    "@coffeeExp/env": "workspace:*"
   },
   "devDependencies": {
     "@types/pg": "catalog:db",
