@@ -1,5 +1,6 @@
 {
-  "name": "app",
+  "name": "@coffeeExp/app",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "imports": {
@@ -12,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coffeeExp/auth": "workspace:*",
     "@tailwindcss/vite": "catalog:app",
     "@tanstack/react-devtools": "catalog:app",
     "@tanstack/react-router": "catalog:app",

@@ -101,6 +101,9 @@ importers:
 
   app:
     dependencies:
+      '@coffeeExp/auth':
+        specifier: workspace:*
+        version: link:../packages/auth
       '@tailwindcss/vite':
         specifier: catalog:app
         version: 4.3.3(vite@8.3.2(@types/node@22.20.5)(esbuild@0.28.1)(jiti@2.7.0))
