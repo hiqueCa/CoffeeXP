@@ -1,0 +1,6 @@
+{
+  "extends": "@coffeeExp/tsconfig/base.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+}
