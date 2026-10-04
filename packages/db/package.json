@@ -21,6 +21,7 @@
     "@coffeeExp/tsconfig": "workspace:*"
   },
   "devDependencies": {
+    "@types/node": "catalog:",
     "@types/pg": "catalog:db",
     "drizzle-kit": "catalog:db"
   }
