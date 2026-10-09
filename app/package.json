@@ -10,7 +10,8 @@
     "dev": "vite dev --port 3000",
     "generate-routes": "tsr generate",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run"
   },
   "dependencies": {
     "@coffeeExp/auth": "workspace:*",
@@ -32,7 +33,8 @@
     "@types/react-dom": "catalog:app",
     "@vitejs/plugin-react": "catalog:app",
     "typescript": "catalog:app",
-    "vite": "catalog:app"
+    "vite": "catalog:app",
+    "vitest": "catalog:"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
