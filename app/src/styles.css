@@ -8,6 +8,9 @@
 }
 
 :root {
+  --md-primary: #7A4A23;
+  --md-surface: #FBF7EE;
+  --md-surface-container-low: #F6F1E8;
   --sea-ink: #173a40;
   --sea-ink-soft: #416166;
   --lagoon: #4fb8b2;
@@ -21,7 +24,7 @@
   --inset-glint: rgba(255, 255, 255, 0.82);
   --kicker: rgba(47, 106, 74, 0.9);
   --bg-base: #e7f3ec;
-  --header-bg: rgba(251, 255, 248, 0.84);
+  --header-bg: rgba(229, 234, 177, 0.905);
   --chip-bg: rgba(255, 255, 255, 0.8);
   --chip-line: rgba(47, 106, 74, 0.18);
   --link-bg-hover: rgba(255, 255, 255, 0.9);
@@ -89,12 +92,7 @@ body {
   margin: 0;
   color: var(--sea-ink);
   font-family: var(--font-sans);
-  background-color: var(--bg-base);
-  background:
-    radial-gradient(1100px 620px at -8% -10%, var(--hero-a), transparent 58%),
-    radial-gradient(1050px 620px at 112% -12%, var(--hero-b), transparent 62%),
-    radial-gradient(720px 380px at 50% 115%, rgba(79, 184, 178, 0.1), transparent 68%),
-    linear-gradient(180deg, color-mix(in oklab, var(--sand) 68%, white) 0%, var(--foam) 44%, var(--bg-base) 100%);
+  background-color: var(--md-surface);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -449,6 +447,26 @@ a {
 
 .rise-in {
   animation: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.coffee-exp-bean {
+  display: inline-block;
+  width: 28px; height: 28px;
+  background: var(--md-primary);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: var(--md-elev-1);
+}
+.coffee-exp-bean::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--md-surface);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(45deg);
 }
 
 @keyframes rise-in {
