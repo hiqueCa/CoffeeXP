@@ -1,1 +1,1 @@
-export const CoffeeExpBean = () => <span className="coffee-exp-bean" />;
+export const CoffeeExpBean = () => <span className="cj-bean" />;
