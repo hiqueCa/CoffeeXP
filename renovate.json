@@ -3,7 +3,12 @@
   "extends": [
     "config:recommended"
   ],
-  "vulnerabilityAlerts": {
-    "enabled": true
-  }
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "prConcurrentLimit": 5,
+      "prHourlyLimit": 0
+    }
+  ]
 }
