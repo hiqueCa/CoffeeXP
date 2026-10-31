@@ -63,8 +63,8 @@ catalogs:
       specifier: ^8.23.1
       version: 8.23.1
     drizzle-kit:
-      specifier: 1.0.0-rc.4
-      version: 1.0.0-rc.4
+      specifier: 1.0.0-rc.5-ab785fc
+      version: 1.0.0-rc.5-ab785fc
     drizzle-orm:
       specifier: 1.0.0-rc.4
       version: 1.0.0-rc.4
@@ -198,7 +198,7 @@ importers:
         version: 8.23.1
       drizzle-kit:
         specifier: catalog:db
-        version: 1.0.0-rc.4
+        version: 1.0.0-rc.5-ab785fc
 
   packages/env:
     dependencies:
@@ -2007,8 +2007,8 @@ packages:
     resolution: {integrity: sha512-DPi0FmjiSU5EvQV0++GFDOJ9ASQUVFh5kD+OzOnYdi7n3Wpm9hWWGfB/O2blfHcMVTL5WkQXSnRiK9makhrcnw==}
     engines: {node: '>=0.3.1'}
 
-  drizzle-kit@1.0.0-rc.4:
-    resolution: {integrity: sha512-KZCpjRyu+oYHLj/UJogfFlOkWhHVkaEI2EOT1U3NDVXUzLoTyPjqwFxwOrlQxsY6jzRyxcz4EacqboGfhEeYrA==}
+  drizzle-kit@1.0.0-rc.5-ab785fc:
+    resolution: {integrity: sha512-TSg7sK1finOxdo48O9mDfyMY3lhi/aHCVIil5TFhthyq/H/89H/3nwX5V9Gdp7HYMUGFHyWJD5iowSn98l0elw==}
     hasBin: true
 
   drizzle-orm@1.0.0-rc.4:
@@ -4718,7 +4718,7 @@ snapshots:
 
   diff@8.0.4: {}
 
-  drizzle-kit@1.0.0-rc.4:
+  drizzle-kit@1.0.0-rc.5-ab785fc:
     dependencies:
       '@drizzle-team/brocli': 0.12.1
       '@js-temporal/polyfill': 0.5.1
