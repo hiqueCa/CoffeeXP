@@ -8,11 +8,21 @@
     "test": "vitest run",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "format": "pnpm -r format"
+    "format": "pnpm -r format",
+    "renovate:validate": "RENOVATE_X_IGNORE_RE2=true pnpm renovate-config-validator"
   },
   "devDependencies": {
     "oxlint": "catalog:",
-    "vitest": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "dependencies": {
+    "renovate": "catalog:"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss"
+    ]
   }
 }

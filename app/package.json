@@ -34,11 +34,5 @@
     "@vitejs/plugin-react": "catalog:app",
     "vite": "catalog:app",
     "vitest": "catalog:"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lightningcss"
-    ]
   }
 }
