@@ -16,9 +16,6 @@
     "typescript": "catalog:",
     "vitest": "catalog:"
   },
-  "dependencies": {
-    "renovate": "catalog:"
-  },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
