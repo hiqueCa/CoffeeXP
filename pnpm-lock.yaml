@@ -51,9 +51,6 @@ catalogs:
     tailwindcss:
       specifier: ^4.1.18
       version: 4.3.3
-    typescript:
-      specifier: ^6.0.2
-      version: 6.0.3
     vite:
       specifier: ^8.0.0
       version: 8.3.2
@@ -81,6 +78,9 @@ catalogs:
     oxlint:
       specifier: ^1.76.0
       version: 1.76.0
+    typescript:
+      specifier: ^6.0.2
+      version: 6.0.3
     vitest:
       specifier: ^5.0.0
       version: 5.0.0
@@ -95,6 +95,9 @@ importers:
       oxlint:
         specifier: 'catalog:'
         version: 1.76.0
+      typescript:
+        specifier: 'catalog:'
+        version: 6.0.3
       vitest:
         specifier: 'catalog:'
         version: 5.0.0(@types/node@26.4.1)(jsdom@28.1.0(@noble/hashes@2.2.0))(msw@2.15.0(@types/node@26.4.1)(typescript@6.0.3))(vite@8.3.2(@types/node@26.4.1)(esbuild@0.28.1)(jiti@2.7.0))
@@ -150,9 +153,6 @@ importers:
       '@vitejs/plugin-react':
         specifier: catalog:app
         version: 6.1.1(vite@8.3.2(@types/node@22.20.5)(esbuild@0.28.1)(jiti@2.7.0))
-      typescript:
-        specifier: catalog:app
-        version: 6.0.3
       vite:
         specifier: catalog:app
         version: 8.3.2(@types/node@22.20.5)(esbuild@0.28.1)(jiti@2.7.0)

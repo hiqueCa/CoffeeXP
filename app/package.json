@@ -32,7 +32,6 @@
     "@types/react": "catalog:app",
     "@types/react-dom": "catalog:app",
     "@vitejs/plugin-react": "catalog:app",
-    "typescript": "catalog:app",
     "vite": "catalog:app",
     "vitest": "catalog:"
   },

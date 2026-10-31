@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "oxlint": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "typescript": "catalog:"
   }
 }

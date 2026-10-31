@@ -96,37 +96,11 @@
   --tag: var(--md-surface-container-high);
 }
 
-[data-theme="sepia"] {
-  --md-primary:            #8A4516;
-  --md-primary-container:  #FBD7B2;
-  --md-surface:            #F1E4CC;
-  --md-surface-container-low:  #ECDDC2;
-  --md-surface-container:      #E5D6BA;
-  --md-surface-container-high: #DECBA9;
-  --md-on-surface:         #2E2316;
-  --md-on-surface-variant: #6B5634;
-  --md-outline-variant:    #CBB58A;
-  --rule-soft: #D5C195;
-  --tag: var(--md-surface-container-high);
-}
-
-/* density */
-[data-density="cozy"] {
-  --pad-x: 28px;
-  --pad-y: 28px;
-  --gap: 22px;
-  --row-h: 64px;
-  --type-step: 0;
-}
-[data-density="compact"] {
-  --pad-x: 18px;
-  --pad-y: 16px;
-  --gap: 12px;
-  --row-h: 50px;
-  --type-step: -1px;
-}
-
 * { box-sizing: border-box; }
+
+body {
+  background-color: var(--md-surface);
+}
 
 .cj {
   font-family: 'Roboto Flex', 'Roboto', system-ui, -apple-system, sans-serif;
