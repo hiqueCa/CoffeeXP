@@ -10,7 +10,7 @@ allowBuilds:
 catalog:
   '@types/node': ^26.4.1
   oxlint: ^1.76.0
-  typescript: ^6.0.2
+  typescript: ^7.0.0
   vitest: ^5.0.0
   zod: ^4.5.4
 
