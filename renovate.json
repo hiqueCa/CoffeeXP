@@ -9,7 +9,17 @@
       "automerge": true,
       "prConcurrentLimit": 5,
       "prHourlyLimit": 0,
-      "minimimReleaseAge": "14 days"
+      "minimimReleaseAge": "7 days",
+      "internalChecksFilter": "strict"
     }
-  ]
+  ],
+
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "minimumReleaseAge": null,
+    "schedule": ["at any time"],
+    "prCreation": "immediate",
+    "labels": ["security"]
+  }
 }
