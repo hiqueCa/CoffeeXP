@@ -232,6 +232,7 @@ body {
 .cj-btn:hover::before { opacity: 0.08; }
 .cj-btn:active::before { opacity: 0.12; }
 .cj-btn:active { transform: scale(0.985); }
+.cj-btn:focus-visible { outline: 2px solid var(--md-primary); outline-offset: 3px; }
 
 .cj-btn.ghost {
   background: transparent;
