@@ -39,7 +39,7 @@ catalogs:
   db:
     '@types/pg': ^8.23.1
     drizzle-kit: 1.0.0-rc.4
-    drizzle-orm: 1.0.0-rc.4
+    drizzle-orm: 1.0.0-rc.5-ab785fc
     pg: ^8.23.0
 
 cleanupUnusedCatalogs: true
