@@ -13,7 +13,8 @@
   "devDependencies": {
     "oxlint": "catalog:",
     "typescript": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "@types/node": "catalog:"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
