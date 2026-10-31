@@ -9,7 +9,7 @@
       "automerge": true,
       "prConcurrentLimit": 5,
       "prHourlyLimit": 0,
-      "minimimReleaseAge": "7 days",
+      "minimumReleaseAge": "7 days",
       "internalChecksFilter": "strict"
     }
   ],
