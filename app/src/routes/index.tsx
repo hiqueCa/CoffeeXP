@@ -3,9 +3,9 @@ import { GoogleMark } from "#/components/GoogleMark";
 import { createFileRoute } from "@tanstack/react-router";
 import v60StillLife from "../../assets/v60-still-life.avif";
 
-export const Route = createFileRoute("/")({ component: App });
+export const Route = createFileRoute("/")({ component: IndexPage });
 
-function App() {
+function IndexPage() {
   const year = new Date().getFullYear();
 
   return (
