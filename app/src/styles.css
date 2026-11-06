@@ -387,19 +387,9 @@ textarea.cj-input { resize: none; line-height: 1.55; padding: 12px 4px; }
 
 /* ---- Placeholder image ---- */
 .cj-ph {
-  background:
-    repeating-linear-gradient(135deg,
-      var(--md-surface-container-high) 0px, var(--md-surface-container-high) 8px,
-      var(--md-surface-container) 8px, var(--md-surface-container) 16px);
   border-radius: var(--md-radius-md);
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: var(--md-on-surface-variant);
-  font-family: 'Roboto Mono', ui-monospace, Menlo, monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 /* ---- Top app bar (M3) ---- */

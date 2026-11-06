@@ -1,6 +1,7 @@
 import { CoffeeExpBean } from "#/components/CoffeeExpBean";
 import { GoogleMark } from "#/components/GoogleMark";
 import { createFileRoute } from "@tanstack/react-router";
+import v60StillLife from "../../assets/v60-still-life.avif";
 
 export const Route = createFileRoute("/")({ component: App });
 
@@ -27,8 +28,12 @@ function App() {
           </p>
         </section>
 
-        <div className="cj-ph h-[200px] [grid-area:image] min-[900px]:h-[280px] min-[900px]:self-center">
-          hero · still life of a hario v60
+        <div className="cj-ph h-[200px] overflow-hidden [grid-area:image] min-[900px]:h-[280px] min-[900px]:self-center">
+          <img
+            className="block h-full w-full object-cover object-center"
+            src={v60StillLife}
+            alt="Still life of a Hario V60 pour-over dripper"
+          />
         </div>
 
         <div className="mx-auto flex w-full max-w-[520px] flex-col gap-3 pt-7 pb-3 [grid-area:action] min-[900px]:mx-0 min-[900px]:max-w-[360px] min-[900px]:self-start min-[900px]:pt-5">
@@ -43,7 +48,7 @@ function App() {
       </main>
 
       <footer className="mt-6 border-t border-[var(--md-outline-variant)] bg-[var(--md-surface-container-low)] px-[18px] pt-6 pb-7 min-[900px]:px-7">
-        <p className="cj-faint m-0 mt-5 text-xs">&copy; {year} hiqueCa. All rights reserved.</p>
+        <p className="cj-faint m-0 mt-5 text-xs ">&copy; {year} hiqueCa. All rights reserved.</p>
       </footer>
     </div>
   );
