@@ -35,6 +35,8 @@
     "@types/react-dom": "catalog:app",
     "@vitejs/plugin-react": "catalog:",
     "vite": "catalog:app",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "@testing-library/jest-dom": "catalog:",
+    "jsdom": "catalog:"
   }
 }

@@ -6,7 +6,7 @@ import v60StillLife from "../../assets/v60-still-life.avif";
 
 export const Route = createFileRoute("/")({ component: IndexPage });
 
-function IndexPage() {
+export function IndexPage() {
   const year = new Date().getFullYear();
 
   const handleSignIn = async () => {

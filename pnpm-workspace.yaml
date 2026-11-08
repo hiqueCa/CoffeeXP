@@ -16,7 +16,7 @@ catalog:
   jsdom: ^31.0.0
   oxlint: ^1.76.0
   typescript: ^7.0.0
-  vitest: 'catalog:'
+  vitest: ^5.0.5
   zod: ^4.5.4
 
 catalogMode: prefer
@@ -42,7 +42,7 @@ catalogs:
     vite: ^8.0.0
   auth:
     '@better-auth/drizzle-adapter': ^1.7.18
-    better-auth: ^1.6.25
+    better-auth: ^1.7.18
   db:
     '@types/pg': ^8.23.1
     drizzle-kit: 1.0.0-rc.5-ab785fc
