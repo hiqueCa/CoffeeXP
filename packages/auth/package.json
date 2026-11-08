@@ -13,9 +13,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "better-auth": "catalog:auth",
-    "@coffeeExp/tsconfig": "workspace:*",
+    "@better-auth/drizzle-adapter": "catalog:auth",
     "@coffeeExp/db": "workspace:*",
-    "@coffeeExp/env": "workspace:*"
+    "@coffeeExp/env": "workspace:*",
+    "@coffeeExp/tsconfig": "workspace:*",
+    "better-auth": "catalog:auth"
   }
 }
