@@ -33,7 +33,7 @@
     "@types/node": "catalog:app",
     "@types/react": "catalog:app",
     "@types/react-dom": "catalog:app",
-    "@vitejs/plugin-react": "catalog:app",
+    "@vitejs/plugin-react": "catalog:",
     "vite": "catalog:app",
     "vitest": "catalog:"
   }
