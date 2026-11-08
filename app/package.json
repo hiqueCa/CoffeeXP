@@ -28,6 +28,8 @@
     "@tailwindcss/typography": "catalog:app",
     "@tanstack/devtools-vite": "catalog:app",
     "@tanstack/router-cli": "catalog:app",
+    "@testing-library/dom": "catalog:app",
+    "@testing-library/react": "catalog:app",
     "@types/node": "catalog:app",
     "@types/react": "catalog:app",
     "@types/react-dom": "catalog:app",
