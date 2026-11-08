@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./index.ts"
+    "./server": "./auth.server.ts",
+    "./client": "./auth-client.ts"
   },
   "scripts": {
     "format": "dprint fmt",

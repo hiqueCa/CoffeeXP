@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter @coffeeExp/web dev",
+    "dev": "pnpm --filter @coffeeExp/app dev",
     "test": "vitest run",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",

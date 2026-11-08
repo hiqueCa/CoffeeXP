@@ -1,4 +1,4 @@
-import { authServer } from "@coffeeExp/auth";
+import { authServer } from "@coffeeExp/auth/server";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/api/auth/$")({

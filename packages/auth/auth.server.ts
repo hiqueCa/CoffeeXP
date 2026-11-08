@@ -1,7 +1,7 @@
 import { db } from "@coffeeExp/db";
 import { parseEnv } from "@coffeeExp/env";
+import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { betterAuth } from "better-auth/minimal";
 import { loadEnvFile } from "node:process";
 import { fileURLToPath } from "node:url";
 
@@ -14,6 +14,8 @@ try {
 const env = parseEnv(process.env);
 
 export const authServer = betterAuth({
+  baseURL: env.BETTER_AUTH_URL,
+  secret: env.BETTER_AUTH_SECRET,
   database: drizzleAdapter(db, {
     provider: "pg",
   }),

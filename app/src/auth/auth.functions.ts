@@ -1,4 +1,4 @@
-import { authServer } from "@coffeeExp/auth";
+import { authServer } from "@coffeeExp/auth/server";
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
 

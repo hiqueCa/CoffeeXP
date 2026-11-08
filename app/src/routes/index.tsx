@@ -1,5 +1,6 @@
 import { CoffeeExpBean } from "#/components/CoffeeExpBean";
 import { GoogleMark } from "#/components/GoogleMark";
+import { authClient } from "@coffeeExp/auth/client";
 import { createFileRoute } from "@tanstack/react-router";
 import v60StillLife from "../../assets/v60-still-life.avif";
 
@@ -7,6 +8,12 @@ export const Route = createFileRoute("/")({ component: IndexPage });
 
 function IndexPage() {
   const year = new Date().getFullYear();
+
+  const handleSignIn = async () => {
+    authClient.signIn.social({
+      provider: "google",
+    });
+  };
 
   return (
     <div className="flex min-h-dvh flex-col bg-[var(--md-surface)] text-[var(--md-on-surface)]">
@@ -37,7 +44,7 @@ function IndexPage() {
         </div>
 
         <div className="mx-auto flex w-full max-w-[520px] flex-col gap-3 pt-7 pb-3 [grid-area:action] min-[900px]:mx-0 min-[900px]:max-w-[360px] min-[900px]:self-start min-[900px]:pt-5">
-          <button type="button" className="cj-btn tonal h-12! w-full gap-3!">
+          <button type="button" className="cj-btn tonal h-12! w-full gap-3!" onClick={handleSignIn}>
             <GoogleMark />
             Continue with Google
           </button>
