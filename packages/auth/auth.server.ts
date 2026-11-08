@@ -1,7 +1,8 @@
+import { drizzleAdapter } from "@better-auth/drizzle-adapter";
 import { db } from "@coffeeExp/db";
+import { schema } from "@coffeeExp/db";
 import { parseEnv } from "@coffeeExp/env";
 import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { loadEnvFile } from "node:process";
 import { fileURLToPath } from "node:url";
 
@@ -18,6 +19,7 @@ export const authServer = betterAuth({
   secret: env.BETTER_AUTH_SECRET,
   database: drizzleAdapter(db, {
     provider: "pg",
+    schema,
   }),
   socialProviders: {
     google: {
