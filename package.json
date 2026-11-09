@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter @coffeeExp/app dev",
-    "test": "vitest run",
+    "test": "vitest run --watch",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "format": "pnpm -r format"

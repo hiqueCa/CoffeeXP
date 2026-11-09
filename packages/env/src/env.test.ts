@@ -1,9 +1,17 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { parseEnv } from "./env.ts";
 
-vi.stubEnv("DATABASE_URL", "https://example.com/database");
-vi.stubEnv("BETTER_AUTH_URL", "https://example.com/auth");
-vi.stubEnv("BETTER_AUTH_SECRET", "abcdefghijklmnopqrstuvwxyz123456");
+beforeAll(() => {
+  vi.stubEnv("DATABASE_URL", "https://example.com/database");
+  vi.stubEnv("BETTER_AUTH_URL", "https://example.com/auth");
+  vi.stubEnv("BETTER_AUTH_SECRET", "abcdefghijklmnopqrstuvwxyz123456");
+  vi.stubEnv("GOOGLE_CLIENT_ID", "google-client-id");
+  vi.stubEnv("GOOGLE_CLIENT_SECRET", "google-client-secret");
+});
+
+afterAll(() => {
+  vi.unstubAllEnvs();
+});
 
 describe("parseEnv", () => {
   it("parses environment variables correctly", () => {

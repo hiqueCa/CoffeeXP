@@ -4,11 +4,11 @@ import { authClient } from "@coffeeExp/auth/client";
 import { createFileRoute } from "@tanstack/react-router";
 import v60StillLife from "../../assets/v60-still-life.avif";
 
+const year = new Date().getFullYear();
+
 export const Route = createFileRoute("/")({ component: IndexPage });
 
 function IndexPage() {
-  const year = new Date().getFullYear();
-
   const handleSignIn = async () => {
     authClient.signIn.social({
       provider: "google",
