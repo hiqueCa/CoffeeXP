@@ -1,12 +1,13 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": ["eslint-plugin-testing-library"],
   "plugins": [
     "typescript",
     "unicorn",
     "oxc",
     "vitest",
     "jsdoc",
-    "react"
+    "react",
   ],
   "categories": {
     "correctness": "error"
