@@ -10,7 +10,7 @@
     "format": "dprint fmt",
     "lint": "oxlint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --coverage"
+    "test": "vitest run"
   },
   "dependencies": {
     "@coffeeExp/tsconfig": "workspace:*",
