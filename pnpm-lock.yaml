@@ -93,6 +93,9 @@ catalogs:
     '@vitejs/plugin-react':
       specifier: ^6.0.1
       version: 6.1.2
+    eslint-plugin-jest-dom:
+      specifier: ^5.10.1
+      version: 5.10.1
     eslint-plugin-testing-library:
       specifier: ^7.16.2
       version: 7.16.2
@@ -204,6 +207,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 6.1.2(vite@8.3.5(@types/node@22.20.5)(esbuild@0.28.1)(jiti@2.7.0)(yaml@2.9.1))
+      eslint-plugin-jest-dom:
+        specifier: 'catalog:'
+        version: 5.10.1(@testing-library/dom@10.4.2)(eslint@10.14.0(jiti@2.7.0))
       eslint-plugin-testing-library:
         specifier: 'catalog:'
         version: 7.16.2(eslint@10.14.0(jiti@2.7.0))(typescript@7.0.2)
@@ -2437,6 +2443,16 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
+  eslint-plugin-jest-dom@5.10.1:
+    resolution: {integrity: sha512-IIJdzbACbhJUJyMAqpA9E9gxp1Gv29TeQ3DtL+pepwP8Oq2WiqjOB2HbnEIs23h0ewdKIZRDI56yLro2eUO+DA==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6', yarn: '>=1'}
+    peerDependencies:
+      '@testing-library/dom': ^8.0.0 || ^9.0.0 || ^10.0.0
+      eslint: ^6.8.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
+    peerDependenciesMeta:
+      '@testing-library/dom':
+        optional: true
+
   eslint-plugin-testing-library@7.16.2:
     resolution: {integrity: sha512-8gleGnQXK2ZA3hHwjCwpYTZvM+9VsrJ+/9kDI8CjqAQGAdMQOdn/rJNu7ZySENuiWlGKQWyZJ4ZjEg2zamaRHw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -2989,6 +3005,10 @@ packages:
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
+
+  requireindex@1.2.0:
+    resolution: {integrity: sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==}
+    engines: {node: '>=0.10.5'}
 
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
@@ -5292,6 +5312,13 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
+  eslint-plugin-jest-dom@5.10.1(@testing-library/dom@10.4.2)(eslint@10.14.0(jiti@2.7.0)):
+    dependencies:
+      eslint: 10.14.0(jiti@2.7.0)
+      requireindex: 1.2.0
+    optionalDependencies:
+      '@testing-library/dom': 10.4.2
+
   eslint-plugin-testing-library@7.16.2(eslint@10.14.0(jiti@2.7.0))(typescript@7.0.2):
     dependencies:
       '@typescript-eslint/scope-manager': 8.72.2
@@ -5879,6 +5906,8 @@ snapshots:
 
   require-directory@2.1.1:
     optional: true
+
+  requireindex@1.2.0: {}
 
   resolve-pkg-maps@1.0.0: {}
 

@@ -35,6 +35,7 @@
     "@types/react": "catalog:app",
     "@types/react-dom": "catalog:app",
     "@vitejs/plugin-react": "catalog:",
+    "eslint-plugin-jest-dom": "catalog:",
     "eslint-plugin-testing-library": "catalog:",
     "jsdom": "catalog:",
     "vite": "catalog:app",
