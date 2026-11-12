@@ -5,10 +5,11 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   plugins: [
     tanstackStart({
-      // Configure for test environment
+      // Configure for test environmen
+      srcDirectory: "./src",
       router: {
-        routesDirectory: "./src/routes",
-        generatedRouteTree: "./src/routeTree.gen.ts",
+        routesDirectory: "./routes",
+        generatedRouteTree: "./routeTree.gen.ts",
         disableLogging: true,
       },
     }),
@@ -16,7 +17,7 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
-    setupFiles: ["./src/test/setup.ts"],
+    setupFiles: ["./test/setup.ts"],
     typecheck: { enabled: true },
     watch: false,
     // Ensure route tree is generated before tests
