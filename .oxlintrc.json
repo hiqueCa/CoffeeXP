@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "jsPlugins": ["eslint-plugin-testing-library"],
+  "jsPlugins": ["eslint-plugin-testing-library", "eslint-plugin-jest-dom"],
   "plugins": [
     "typescript",
     "unicorn",
