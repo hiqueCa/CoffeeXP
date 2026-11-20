@@ -9,9 +9,7 @@
   "scripts": {
     "format": "dprint fmt",
     "lint": "oxlint .",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest --watch"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@coffeeExp/tsconfig": "workspace:*",
