@@ -1,5 +1,5 @@
 import { authClient } from "@coffeeExp/auth/client";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderWithFileRoutes } from "../../test/route-utils";
 import { screen } from "../../test/utils";
 
@@ -11,26 +11,33 @@ vi.mock("@coffeeExp/auth/client", () => ({
   },
 }));
 
+beforeEach(() => {
+  vi.clearAllMocks();
+
+  renderWithFileRoutes({
+    initialLocation: "/",
+  });
+});
+
 describe("Index Route", () => {
   it("renders the index route correctly", async () => {
-    renderWithFileRoutes({
-      initialLocation: "/",
-    });
-
     expect(await screen.findByText("CoffeeXP")).toBeInTheDocument();
   });
 
   it("calls the authClient when the login button is clicked", async () => {
-    renderWithFileRoutes({
-      initialLocation: "/",
-    });
-
     const loginButton = await screen.findByRole("button", { name: /Continue with Google/i });
     loginButton.click();
 
     expect(authClient.signIn.social).toHaveBeenCalled();
   });
 
-  it("redirects to the home page when the user authenticates succesfully", async () => {
+  it("calls the social provider sign-in with the correct callback url", async () => {
+    const loginButton = await screen.findByRole("button", { name: /Continue with Google/i });
+    loginButton.click();
+
+    expect(authClient.signIn.social).toHaveBeenCalledWith({
+      provider: "google",
+      callbackURL: "/home",
+    });
   });
 });

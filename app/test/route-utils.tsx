@@ -12,7 +12,6 @@ export function renderWithFileRoutes(
   {
     initialLocation = "/",
     routerContext = {},
-    ...renderOptions
   }: RenderWithFileRoutesOptions = {},
 ) {
   const router = createRouter({
@@ -24,7 +23,7 @@ export function renderWithFileRoutes(
   });
 
   return {
-    ...render(<RouterProvider router={router} />, { ...renderOptions }),
+    ...render(<RouterProvider router={router} />),
     router,
   };
 }

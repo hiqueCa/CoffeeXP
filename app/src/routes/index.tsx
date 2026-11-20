@@ -12,6 +12,7 @@ function IndexPage() {
   const handleSignIn = async () => {
     authClient.signIn.social({
       provider: "google",
+      callbackURL: "/home",
     });
   };
 
