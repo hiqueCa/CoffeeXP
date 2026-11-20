@@ -1,8 +1,11 @@
 import { CoffeeExpBean } from "#/components/CoffeeExpBean";
 import { GoogleMark } from "#/components/GoogleMark";
-import { authClient } from "@coffeeExp/auth/client";
+import { type FileRoutesByTo } from "#/routeTree.gen";
+import { authWithCallbackTo } from "@coffeeExp/auth/client";
 import { createFileRoute } from "@tanstack/react-router";
 import v60StillLife from "../../assets/v60-still-life.avif";
+
+type TCallbackableURLs = keyof FileRoutesByTo;
 
 const year = new Date().getFullYear();
 
@@ -10,10 +13,7 @@ export const Route = createFileRoute("/")({ component: IndexPage });
 
 function IndexPage() {
   const handleSignIn = async () => {
-    authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/home",
-    });
+    authWithCallbackTo<TCallbackableURLs>("/home");
   };
 
   return (
