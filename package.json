@@ -9,6 +9,7 @@
     "db:up": "pnpm --filter @coffeeExp/db up",
     "db:down": "pnpm --filter @coffeeExp/db down",
     "test": "pnpm -r test",
+    "test:watch": "pnpm -r --parallel test:watch",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "format": "pnpm -r format"

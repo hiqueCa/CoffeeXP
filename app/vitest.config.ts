@@ -6,7 +6,6 @@ export default defineConfig({
   css: {},
   plugins: [
     tanstackStart({
-      // Configure for test environmen
       srcDirectory: "./src",
       router: {
         routesDirectory: "./routes",
@@ -20,8 +19,6 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./test/setup.ts"],
     typecheck: { enabled: true },
-    watch: false,
-    // Ensure route tree is generated before tests
     globals: true,
   },
 });
