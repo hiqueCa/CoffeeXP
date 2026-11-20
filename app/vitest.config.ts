@@ -1,9 +1,8 @@
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vitest/config";
+import { defineProject } from "vitest/config";
 
-export default defineConfig({
-  css: {},
+export default defineProject({
   plugins: [
     tanstackStart({
       srcDirectory: "./src",
@@ -16,9 +15,9 @@ export default defineConfig({
     react(),
   ],
   test: {
+    name: "app",
     environment: "jsdom",
     setupFiles: ["./test/setup.ts"],
     typecheck: { enabled: true },
-    globals: true,
   },
 });

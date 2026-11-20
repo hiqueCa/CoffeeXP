@@ -8,11 +8,11 @@
     "db:studio": "pnpm --filter @coffeeExp/db studio",
     "db:up": "pnpm --filter @coffeeExp/db up",
     "db:down": "pnpm --filter @coffeeExp/db down",
-    "test": "pnpm -r test",
-    "test:watch": "pnpm -r --parallel test:watch",
-    "lint": "pnpm -r lint",
-    "typecheck": "pnpm -r typecheck",
-    "format": "pnpm -r format"
+    "test": "vitest",
+    "test:watch": "pnpm --parallel test:watch",
+    "lint": "pnpm lint",
+    "typecheck": "pnpm typecheck",
+    "format": "pnpm format"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "catalog:",
