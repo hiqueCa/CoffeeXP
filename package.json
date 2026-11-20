@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter @coffeeExp/app dev",
+    "db:studio": "pnpm --filter @coffeeExp/db studio",
+    "db:up": "pnpm --filter @coffeeExp/db up",
+    "db:down": "pnpm --filter @coffeeExp/db down",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",

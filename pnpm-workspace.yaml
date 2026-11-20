@@ -49,6 +49,6 @@ catalogs:
     '@types/pg': ^8.23.1
     drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-ab785fc
-    pg: ^8.23.0
+    pg: ^8.23.1
 
 cleanupUnusedCatalogs: true

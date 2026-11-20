@@ -30,4 +30,7 @@ describe("Index Route", () => {
 
     expect(authClient.signIn.social).toHaveBeenCalled();
   });
+
+  it("redirects to the home page when the user authenticates succesfully", async () => {
+  });
 });
