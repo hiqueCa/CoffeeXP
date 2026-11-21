@@ -3,6 +3,6 @@
   "private": true,
   "dependencies": {
     "@tsconfig/node-ts": "^23.6.4",
-    "@tsconfig/node24": "^24.0.4"
+    "@tsconfig/node26": "^26.0.0"
   }
 }
