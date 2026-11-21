@@ -1,7 +1,7 @@
 import { getSession } from "#/auth/auth.functions";
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/home")({
+export const Route = createFileRoute("/_authenticated")({
   beforeLoad: async () => {
     const session = await getSession();
 
@@ -11,9 +11,6 @@ export const Route = createFileRoute("/home")({
       });
     }
   },
-  component: HomePage,
-});
 
-function HomePage() {
-  return <div>Hello "/home"!</div>;
-}
+  component: () => <Outlet />,
+});

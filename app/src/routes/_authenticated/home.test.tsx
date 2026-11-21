@@ -1,7 +1,7 @@
 import { getSession } from "#/auth/auth.functions";
 import { describe, expect, it, vi } from "vitest";
-import { renderWithFileRoutes } from "../../test/route-utils";
-import { screen, waitFor } from "../../test/utils";
+import { renderWithFileRoutes } from "../../../test/route-utils";
+import { screen, waitFor } from "../../../test/utils";
 
 vi.mock("#/auth/auth.functions", () => ({
   getSession: vi.fn<() => Promise<void>>(),
